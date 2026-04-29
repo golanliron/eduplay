@@ -3,2614 +3,390 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EduPlay - כל מה שמערכת החינוך צריכה במקום אחד</title>
+<title>EduPlay - כל מה שמערכת החינוך צריכה</title>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-:root {
-  --primary: #1a73e8;
-  --primary-dark: #1557b0;
-  --primary-light: #e8f0fe;
-  --secondary: #00c853;
-  --accent-purple: #7c4dff;
-  --accent-orange: #ff6d00;
-  --accent-teal: #00bfa5;
-  --accent-pink: #e91e63;
-  --bg: #f8f9fa;
-  --surface: #ffffff;
-  --text: #202124;
-  --text-secondary: #5f6368;
-  --border: #e0e0e0;
-  --radius: 12px;
-  --radius-lg: 20px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
-  --shadow-hover: 0 8px 24px rgba(26,115,232,0.2);
-}
-
-body {
-  font-family: 'Heebo', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-/* ===== TOP BAR ===== */
-.top-bar {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow-sm);
-}
-
-.top-bar-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  flex-shrink: 0;
-}
-
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 22px;
-  font-weight: 800;
-  position: relative;
-  overflow: hidden;
-}
-
-.logo-icon::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.15);
-  border-radius: 50%;
-}
-
-.logo-text {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: -0.5px;
-}
-
-.logo-text span {
-  color: var(--primary);
-}
-
-.search-bar {
-  flex: 1;
-  max-width: 680px;
-  position: relative;
-}
-
-.search-bar input {
-  width: 100%;
-  height: 46px;
-  border: 2px solid var(--border);
-  border-radius: 24px;
-  padding: 0 48px 0 20px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 15px;
-  background: var(--bg);
-  transition: all 0.3s;
-  outline: none;
-}
-
-.search-bar input:focus {
-  border-color: var(--primary);
-  background: white;
-  box-shadow: 0 0 0 4px var(--primary-light);
-}
-
-.search-bar input::placeholder {
-  color: var(--text-secondary);
-}
-
-.search-bar .material-icons-round {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-secondary);
-  font-size: 22px;
-}
-
-.top-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-}
-
-.btn-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  transition: background 0.2s;
-  position: relative;
-}
-
-.btn-icon:hover {
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
-.btn-icon .badge {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 18px;
-  height: 18px;
-  background: var(--accent-pink);
-  color: white;
-  font-size: 10px;
-  font-weight: 700;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-/* ===== NAV TABS ===== */
-.nav-tabs {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-tabs-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav-tabs-inner::-webkit-scrollbar { display: none; }
-
-.nav-tab {
-  padding: 14px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  text-decoration: none;
-  white-space: nowrap;
-  border-bottom: 3px solid transparent;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.nav-tab:hover {
-  color: var(--primary);
-  background: var(--primary-light);
-}
-
-.nav-tab.active {
-  color: var(--primary);
-  border-bottom-color: var(--primary);
-  font-weight: 600;
-}
-
-/* ===== DEVICE FILTER ===== */
-.device-filter {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 16px 24px 0;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.device-chip {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 18px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: var(--surface);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.device-chip:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-  background: var(--primary-light);
-}
-
-.device-chip.active {
-  border-color: var(--primary);
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
-.device-chip .material-icons-round {
-  font-size: 18px;
-}
-
-/* ===== HERO BANNER ===== */
-.hero-section {
-  max-width: 1400px;
-  margin: 24px auto;
-  padding: 0 24px;
-}
-
-.hero-banner {
-  background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #253443 100%);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  display: flex;
-  min-height: 320px;
-  position: relative;
-  cursor: pointer;
-  transition: box-shadow 0.3s;
-}
-
-.hero-banner:hover {
-  box-shadow: var(--shadow-lg);
-}
-
-.hero-visual {
-  flex: 0 0 45%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.hero-graphic {
-  width: 280px;
-  height: 280px;
-  position: relative;
-}
-
-.hero-graphic .orbit {
-  position: absolute;
-  border: 2px solid rgba(255,255,255,0.1);
-  border-radius: 50%;
-  animation: orbit-spin 20s linear infinite;
-}
-
-.hero-graphic .orbit:nth-child(1) {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-.hero-graphic .orbit:nth-child(2) {
-  width: 70%;
-  height: 70%;
-  top: 15%;
-  left: 15%;
-  animation-direction: reverse;
-  animation-duration: 15s;
-}
-
-.hero-graphic .orbit:nth-child(3) {
-  width: 40%;
-  height: 40%;
-  top: 30%;
-  left: 30%;
-  animation-duration: 10s;
-}
-
-.hero-graphic .center-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba(26,115,232,0.4);
-}
-
-.hero-graphic .center-icon .material-icons-round {
-  font-size: 40px;
-  color: white;
-}
-
-.hero-graphic .floating-icon {
-  position: absolute;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 20px;
-  animation: float 3s ease-in-out infinite;
-}
-
-.hero-graphic .floating-icon:nth-child(5) {
-  background: var(--secondary);
-  top: 5%;
-  right: 10%;
-  animation-delay: 0s;
-}
-
-.hero-graphic .floating-icon:nth-child(6) {
-  background: var(--accent-orange);
-  bottom: 10%;
-  left: 5%;
-  animation-delay: 1s;
-}
-
-.hero-graphic .floating-icon:nth-child(7) {
-  background: var(--accent-pink);
-  top: 15%;
-  left: 0;
-  animation-delay: 2s;
-}
-
-.hero-graphic .floating-icon:nth-child(8) {
-  background: var(--accent-teal);
-  bottom: 5%;
-  right: 15%;
-  animation-delay: 0.5s;
-}
-
-@keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-.hero-content {
-  flex: 1;
-  padding: 48px 48px 48px 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: white;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.2);
-  padding: 4px 14px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.9);
-  width: fit-content;
-  margin-bottom: 16px;
-  backdrop-filter: blur(10px);
-}
-
-.hero-badge .material-icons-round {
-  font-size: 16px;
-  color: var(--secondary);
-}
-
-.hero-title {
-  font-size: 40px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin-bottom: 12px;
-  letter-spacing: -0.5px;
-}
-
-.hero-title .highlight {
-  background: linear-gradient(135deg, #64b5f6, #42a5f5);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-subtitle {
-  font-size: 18px;
-  color: rgba(255,255,255,0.7);
-  margin-bottom: 28px;
-  max-width: 420px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: var(--secondary);
-  color: white;
-  border: none;
-  border-radius: 24px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-}
-
-.btn-primary:hover {
-  background: #00b848;
-  box-shadow: 0 4px 16px rgba(0,200,83,0.4);
-  transform: translateY(-1px);
-}
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 24px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  backdrop-filter: blur(10px);
-}
-
-.btn-secondary:hover {
-  background: rgba(255,255,255,0.2);
-}
-
-/* ===== SECTION ===== */
-.section {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 32px 24px 0;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.section-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.section-link {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--primary);
-  font-size: 14px;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 20px;
-  transition: background 0.2s;
-}
-
-.section-link:hover {
-  background: var(--primary-light);
-}
-
-.section-link .material-icons-round {
-  font-size: 18px;
-  transform: scaleX(-1);
-}
-
-/* ===== CATEGORY GRID ===== */
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
-}
-
-.category-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px 16px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.category-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
-}
-
-.category-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  margin: 0 auto 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-}
-
-.category-card h3 {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.category-card p {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-/* ===== PRODUCT CARDS ===== */
-.products-scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.products-scroll::-webkit-scrollbar { display: none; }
-
-.product-card {
-  flex: 0 0 220px;
-  scroll-snap-align: start;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.3s;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.product-card:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
-  border-color: var(--primary);
-}
-
-.product-thumb {
-  width: 100%;
-  height: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.product-thumb .material-icons-round {
-  font-size: 48px;
-  color: white;
-  z-index: 1;
-}
-
-.product-thumb .pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0.15;
-  background-image: radial-gradient(circle at 20% 50%, white 2px, transparent 2px),
-                     radial-gradient(circle at 80% 20%, white 1.5px, transparent 1.5px),
-                     radial-gradient(circle at 60% 80%, white 1px, transparent 1px);
-}
-
-.product-info {
-  padding: 14px;
-}
-
-.product-name {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 2px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.product-dev {
-  font-size: 12px;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-}
-
-.product-meta {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-}
-
-.product-rating {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  font-weight: 600;
-}
-
-.product-rating .material-icons-round {
-  font-size: 14px;
-  color: var(--accent-orange);
-}
-
-.product-price {
-  color: var(--primary);
-  font-weight: 600;
-}
-
-.product-tag {
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 4px;
-  font-size: 10px;
-  font-weight: 600;
-  color: white;
-}
-
-/* ===== WIDE PRODUCT CARDS ===== */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 16px;
-}
-
-.product-wide {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 20px;
-  display: flex;
-  gap: 16px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.product-wide:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-2px);
-  border-color: var(--primary);
-}
-
-.product-wide-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.product-wide-icon .material-icons-round {
-  font-size: 32px;
-  color: white;
-}
-
-.product-wide-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.product-wide-info h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.product-wide-info p {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 8px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-.product-wide-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.btn-install {
-  padding: 6px 20px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.btn-install:hover {
-  background: var(--primary-dark);
-  box-shadow: 0 2px 8px rgba(26,115,232,0.3);
-}
-
-.btn-install.free {
-  background: var(--secondary);
-}
-
-.btn-install.free:hover {
-  background: #00b848;
-}
-
-/* ===== STATS BAR ===== */
-.stats-bar {
-  max-width: 1400px;
-  margin: 32px auto 0;
-  padding: 0 24px;
-}
-
-.stats-inner {
-  background: linear-gradient(135deg, var(--primary), var(--accent-purple));
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  color: white;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: 36px;
-  font-weight: 800;
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  font-size: 14px;
-  opacity: 0.85;
-}
-
-/* ===== PRICING SECTION ===== */
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.pricing-card {
-  background: var(--surface);
-  border: 2px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 32px 24px;
-  text-align: center;
-  transition: all 0.3s;
-  position: relative;
-}
-
-.pricing-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-hover);
-}
-
-.pricing-card.popular {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-lg);
-}
-
-.pricing-card.popular::before {
-  content: 'הכי פופולרי';
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--primary);
-  color: white;
-  padding: 4px 16px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.pricing-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  margin: 0 auto 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.pricing-icon .material-icons-round {
-  font-size: 30px;
-  color: white;
-}
-
-.pricing-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.pricing-card .price {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--primary);
-  margin-bottom: 4px;
-}
-
-.pricing-card .price span {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-secondary);
-}
-
-.pricing-card .price-desc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin-bottom: 20px;
-}
-
-.pricing-features {
-  list-style: none;
-  text-align: right;
-  margin-bottom: 24px;
-}
-
-.pricing-features li {
-  padding: 6px 0;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.pricing-features li .material-icons-round {
-  font-size: 18px;
-  color: var(--secondary);
-}
-
-.btn-pricing {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid var(--primary);
-  border-radius: 24px;
-  background: transparent;
-  color: var(--primary);
-  font-family: 'Heebo', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-pricing:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-pricing.filled {
-  background: var(--primary);
-  color: white;
-}
-
-.btn-pricing.filled:hover {
-  background: var(--primary-dark);
-}
-
-/* ===== TESTIMONIALS ===== */
-.testimonials-scroll {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  scrollbar-width: none;
-}
-
-.testimonials-scroll::-webkit-scrollbar { display: none; }
-
-.testimonial-card {
-  flex: 0 0 320px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-}
-
-.testimonial-stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 12px;
-  color: var(--accent-orange);
-}
-
-.testimonial-stars .material-icons-round {
-  font-size: 18px;
-}
-
-.testimonial-text {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin-bottom: 16px;
-  line-height: 1.7;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.testimonial-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-}
-
-.testimonial-name {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.testimonial-role {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-  margin-top: 48px;
-  padding: 40px 24px 24px;
-}
-
-.footer-inner {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 32px;
-  margin-bottom: 32px;
-}
-
-.footer-col h4 {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  color: var(--text);
-}
-
-.footer-col a {
-  display: block;
-  font-size: 13px;
-  color: var(--text-secondary);
-  text-decoration: none;
-  padding: 4px 0;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover {
-  color: var(--primary);
-}
-
-.footer-bottom {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding-top: 20px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.footer-bottom p {
-  font-size: 12px;
-  color: var(--text-secondary);
-}
-
-.footer-links {
-  display: flex;
-  gap: 16px;
-}
-
-.footer-links a {
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: var(--primary);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .top-bar-inner { gap: 10px; }
-  .logo-text { display: none; }
-  .search-bar { max-width: none; }
-
-  .hero-banner { flex-direction: column; min-height: auto; }
-  .hero-visual { flex: none; height: 200px; }
-  .hero-graphic { width: 180px; height: 180px; }
-  .hero-graphic .center-icon { width: 56px; height: 56px; border-radius: 14px; }
-  .hero-graphic .center-icon .material-icons-round { font-size: 28px; }
-  .hero-content { padding: 24px; }
-  .hero-title { font-size: 26px; }
-  .hero-subtitle { font-size: 15px; }
-
-  .category-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .category-card { padding: 16px 10px; }
-  .category-icon { width: 44px; height: 44px; border-radius: 12px; font-size: 22px; }
-
-  .stats-inner { grid-template-columns: repeat(2, 1fr); padding: 24px; }
-  .stat-number { font-size: 28px; }
-
-  .products-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-
-  .device-filter { gap: 8px; }
-  .device-chip { padding: 6px 12px; font-size: 12px; }
-}
-
-/* ===== MODAL ===== */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  backdrop-filter: blur(4px);
-}
-
-.modal-overlay.show {
-  display: flex;
-}
-
-.modal {
-  background: var(--surface);
-  border-radius: var(--radius-lg);
-  max-width: 600px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: var(--shadow-lg);
-  animation: modal-in 0.3s ease;
-}
-
-@keyframes modal-in {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.modal-header {
-  padding: 24px 24px 0;
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.modal-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-icon .material-icons-round {
-  font-size: 36px;
-  color: white;
-}
-
-.modal-title-area { flex: 1; }
-.modal-title-area h2 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-.modal-title-area p { font-size: 14px; color: var(--text-secondary); }
-
-.modal-close {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  transition: background 0.2s;
-}
-
-.modal-close:hover {
-  background: var(--bg);
-}
-
-.modal-body {
-  padding: 24px;
-}
-
-.modal-screenshots {
-  display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-  scrollbar-width: none;
-}
-
-.modal-screenshots::-webkit-scrollbar { display: none; }
-
-.modal-screenshot {
-  flex: 0 0 200px;
-  height: 120px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.modal-desc {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.modal-features {
-  list-style: none;
-  margin-bottom: 24px;
-}
-
-.modal-features li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
-  font-size: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.modal-features li:last-child { border-bottom: none; }
-
-.modal-features li .material-icons-round {
-  font-size: 20px;
-  color: var(--primary);
-}
-
-.modal-actions {
-  display: flex;
-  gap: 12px;
-}
-
-.modal-actions .btn-primary {
-  flex: 1;
-  justify-content: center;
-}
-
-.modal-actions .btn-secondary {
-  border-color: var(--border);
-  color: var(--text);
-  background: var(--bg);
-}
-
-/* ===== FILTER SIDEBAR ===== */
-.filter-toggle {
-  display: none;
-}
-
-/* ===== ANIMATIONS ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s, transform 0.6s;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* cart panel */
-.cart-panel {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 400px;
-  height: 100%;
-  background: var(--surface);
-  box-shadow: -4px 0 20px rgba(0,0,0,0.15);
-  z-index: 200;
-  flex-direction: column;
-  animation: slide-in 0.3s ease;
-}
-
-.cart-panel.show {
-  display: flex;
-}
-
-@keyframes slide-in {
-  from { transform: translateX(-100%); }
-  to { transform: translateX(0); }
-}
-
-.cart-header {
-  padding: 20px 24px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.cart-header h3 {
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.cart-items {
-  flex: 1;
-  overflow-y: auto;
-  padding: 16px 24px;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.cart-item-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cart-item-icon .material-icons-round {
-  font-size: 24px;
-  color: white;
-}
-
-.cart-item-info { flex: 1; }
-.cart-item-info h4 { font-size: 14px; font-weight: 600; }
-.cart-item-info p { font-size: 12px; color: var(--text-secondary); }
-
-.cart-item-price {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--primary);
-}
-
-.cart-item-remove {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-secondary);
-  padding: 4px;
-}
-
-.cart-item-remove:hover { color: var(--accent-pink); }
-
-.cart-footer {
-  padding: 20px 24px;
-  border-top: 1px solid var(--border);
-}
-
-.cart-total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-
-.cart-total .amount {
-  color: var(--primary);
-}
-
-.btn-checkout {
-  width: 100%;
-  padding: 14px;
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 24px;
-  font-family: 'Heebo', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-checkout:hover {
-  background: var(--primary-dark);
-}
-
-.empty-cart {
-  text-align: center;
-  padding: 40px 0;
-  color: var(--text-secondary);
-}
-
-.empty-cart .material-icons-round {
-  font-size: 64px;
-  color: var(--border);
-  margin-bottom: 12px;
-}
-
-@media (max-width: 480px) {
-  .cart-panel { width: 100%; }
-}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#13131a;--surface2:#1a1a24;--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.08);--text:#f0f0f5;--text2:#8888a0;--accent:#6c5ce7;--accent2:#00cec9;--pink:#fd79a8;--orange:#fdcb6e;--green:#00b894;--red:#e17055;--blue:#74b9ff;--glow-accent:rgba(108,92,231,0.3);--radius:16px;--radius-lg:24px}
+body{font-family:'Heebo',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+body::before{content:'';position:fixed;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 20%,rgba(108,92,231,0.08) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(0,206,201,0.06) 0%,transparent 50%);z-index:0;pointer-events:none}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+.top-bar{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--glass-border)}
+.top-inner{max-width:1400px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+.logo-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 4px 20px var(--glow-accent)}
+.logo-mark::before{content:'';position:absolute;width:150%;height:150%;background:conic-gradient(transparent,rgba(255,255,255,0.2),transparent);animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.logo-mark svg{width:22px;height:22px;position:relative;z-index:1}
+.logo-text{font-size:24px;font-weight:800;background:linear-gradient(135deg,#fff,#ccc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.search{flex:1;max-width:600px;position:relative}
+.search input{width:100%;height:44px;background:var(--glass);border:1px solid var(--glass-border);border-radius:22px;padding:0 44px 0 16px;color:var(--text);font-family:'Heebo';font-size:14px;outline:none;transition:all .3s}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow-accent)}
+.search input::placeholder{color:var(--text2)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.5}
+.top-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.btn-icon{width:40px;height:40px;border-radius:12px;border:1px solid var(--glass-border);background:var(--glass);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s;position:relative}
+.btn-icon:hover{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 4px 15px var(--glow-accent)}
+.btn-icon .dot{position:absolute;top:6px;right:6px;width:8px;height:8px;background:var(--pink);border-radius:50%;border:2px solid var(--bg)}
+.nav{background:rgba(10,10,15,0.5);backdrop-filter:blur(10px);border-bottom:1px solid var(--glass-border)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-tab{padding:12px 18px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s;display:flex;align-items:center;gap:6px}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{color:var(--accent2);border-bottom-color:var(--accent2)}
+.nav-tab svg{width:16px;height:16px;opacity:.7}
+.hero{max-width:1400px;margin:32px auto;padding:0 24px}
+.hero-card{background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow:hidden;display:flex;min-height:380px;position:relative}
+.hero-card::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-visual{flex:0 0 42%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.hero-3d{width:300px;height:300px;position:relative;perspective:800px}
+.hero-cube{width:120px;height:120px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-style:preserve-3d;animation:cubeR 15s linear infinite}
+@keyframes cubeR{to{transform:translate(-50%,-50%) rotateX(360deg) rotateY(360deg)}}
+.cube-face{position:absolute;width:120px;height:120px;border:2px solid rgba(108,92,231,0.3);background:rgba(108,92,231,0.08);backdrop-filter:blur(4px);border-radius:16px;display:flex;align-items:center;justify-content:center}
+.cube-face svg{width:40px;height:40px;color:var(--accent2);opacity:.8}
+.cube-face:nth-child(1){transform:rotateY(0deg) translateZ(60px)}.cube-face:nth-child(2){transform:rotateY(180deg) translateZ(60px)}.cube-face:nth-child(3){transform:rotateY(90deg) translateZ(60px)}.cube-face:nth-child(4){transform:rotateY(-90deg) translateZ(60px)}.cube-face:nth-child(5){transform:rotateX(90deg) translateZ(60px)}.cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(60px)}
+.orbit-ring{position:absolute;border:1px solid rgba(255,255,255,0.05);border-radius:50%;animation:orbit 20s linear infinite}
+.orbit-ring:nth-child(1){width:220px;height:220px;top:40px;left:40px}.orbit-ring:nth-child(2){width:280px;height:280px;top:10px;left:10px;animation-direction:reverse;animation-duration:25s}
+@keyframes orbit{to{transform:rotate(360deg)}}
+.orbit-dot{position:absolute;width:10px;height:10px;border-radius:50%;top:-5px;left:50%;box-shadow:0 0 12px currentColor}
+.float-badge{position:absolute;padding:8px 14px;border-radius:12px;background:rgba(255,255,255,0.06);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;gap:8px;font-size:12px;font-weight:500;color:var(--text);animation:floatY 4s ease-in-out infinite}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.float-badge:nth-child(4){top:15%;right:8%}.float-badge:nth-child(5){bottom:20%;left:5%;animation-delay:1.5s}.float-badge:nth-child(6){top:60%;right:5%;animation-delay:3s}
+.fb-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.fb-icon svg{width:16px;height:16px}
+.hero-content{flex:1;padding:52px 52px 52px 24px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-label{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;background:linear-gradient(135deg,rgba(108,92,231,0.2),rgba(0,206,201,0.2));border:1px solid rgba(108,92,231,0.3);font-size:12px;font-weight:600;color:var(--accent2);width:fit-content;margin-bottom:20px}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent2);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-title{font-size:48px;font-weight:900;line-height:1.15;margin-bottom:16px;letter-spacing:-1px}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradS 5s ease infinite}
+@keyframes gradS{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.hero-sub{font-size:17px;color:var(--text2);margin-bottom:32px;max-width:440px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-glow{padding:14px 32px;border-radius:14px;border:none;font-family:'Heebo';font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .3s}
+.btn-glow.primary{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;box-shadow:0 4px 25px var(--glow-accent)}
+.btn-glow.primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px var(--glow-accent)}
+.btn-glow.secondary{background:var(--glass);border:1px solid var(--glass-border);color:var(--text)}
+.btn-glow.secondary:hover{border-color:var(--accent);background:rgba(108,92,231,0.1)}
+.btn-glow svg{width:18px;height:18px}
+.section{max-width:1400px;margin:0 auto;padding:40px 24px 0;position:relative;z-index:1}
+.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.sec-title{font-size:22px;font-weight:700;display:flex;align-items:center;gap:10px}
+.sec-title .dot{width:8px;height:8px;border-radius:50%}
+.sec-more{font-size:13px;color:var(--accent);font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px;padding:8px 16px;border-radius:10px;border:1px solid rgba(108,92,231,0.2);background:rgba(108,92,231,0.05);transition:all .2s}
+.sec-more:hover{background:rgba(108,92,231,0.15)}
+.sec-more svg{width:16px;height:16px;transform:scaleX(-1)}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:14px}
+.cat-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:24px 16px;text-align:center;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.cat-card:hover{transform:translateY(-6px);border-color:var(--cat-color,var(--accent))}
+.cat-icon{width:56px;height:56px;border-radius:16px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.cat-card:hover .cat-icon{transform:scale(1.1)}
+.cat-icon svg{width:28px;height:28px}
+.cat-card h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.cat-card p{font-size:11px;color:var(--text2)}
+.prod-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.prod-scroll::-webkit-scrollbar{display:none}
+.prod-card{flex:0 0 230px;background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:all .3s;position:relative}
+.prod-card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 12px 40px rgba(108,92,231,0.15)}
+.prod-thumb{height:140px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.prod-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,var(--surface))}
+.prod-thumb svg{width:52px;height:52px;color:#fff;z-index:1;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.prod-info{padding:16px}
+.prod-name{font-size:14px;font-weight:600;margin-bottom:4px}
+.prod-dev{font-size:12px;color:var(--text2);margin-bottom:10px}
+.prod-meta{display:flex;align-items:center;justify-content:space-between}
+.prod-stars{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600}
+.prod-stars svg{width:14px;height:14px;color:var(--orange)}
+.prod-price{font-size:13px;font-weight:700;color:var(--accent2)}
+.prod-badge{position:absolute;top:12px;right:12px;padding:4px 10px;border-radius:8px;font-size:10px;font-weight:700;backdrop-filter:blur(10px);z-index:2}
+.wide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.wide-card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:20px;display:flex;gap:16px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden}
+.wide-card::before{content:'';position:absolute;top:0;right:0;width:4px;height:100%;background:var(--card-accent,var(--accent));opacity:0;transition:opacity .3s}
+.wide-card:hover{border-color:rgba(255,255,255,0.12);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.wide-card:hover::before{opacity:1}
+.wide-icon{width:64px;height:64px;border-radius:16px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.wide-icon svg{width:30px;height:30px;color:#fff}
+.wide-info{flex:1;min-width:0}
+.wide-info h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.wide-info p{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.wide-foot{display:flex;align-items:center;justify-content:space-between}
+.btn-get{padding:7px 20px;border-radius:10px;border:1px solid var(--accent);background:rgba(108,92,231,0.1);color:var(--accent);font-family:'Heebo';font-size:12px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-get:hover{background:var(--accent);color:#fff;box-shadow:0 4px 15px var(--glow-accent)}
+.btn-get.free{border-color:var(--green);color:var(--green);background:rgba(0,184,148,0.1)}
+.btn-get.free:hover{background:var(--green);color:#fff}
+.stats-bar{max-width:1400px;margin:48px auto 0;padding:0 24px;position:relative;z-index:1}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{background:var(--glass);border:1px solid var(--glass-border);border-radius:var(--radius);padding:28px 20px;text-align:center;position:relative;overflow:hidden}
+.stat-num{font-size:36px;font-weight:900;position:relative;z-index:1}
+.stat-label{font-size:13px;color:var(--text2);position:relative;z-index:1;margin-top:4px}
+.stat-glow{position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:80px;height:80px;border-radius:50%;filter:blur(40px);opacity:.3}
+.price-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+.price-card{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:36px 28px;position:relative;transition:all .3s}
+.price-card:hover{border-color:rgba(255,255,255,0.1)}
+.price-card.pop{border-color:var(--accent);box-shadow:0 0 60px var(--glow-accent)}
+.price-card.pop::before{content:'הכי פופולרי';position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;padding:5px 18px;border-radius:10px;font-size:12px;font-weight:700}
+.price-icon{width:52px;height:52px;border-radius:14px;margin-bottom:18px;display:flex;align-items:center;justify-content:center}
+.price-icon svg{width:26px;height:26px;color:#fff}
+.price-card h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.price-amount{font-size:36px;font-weight:900;margin-bottom:2px}
+.price-amount span{font-size:14px;font-weight:400;color:var(--text2)}
+.price-desc{font-size:13px;color:var(--text2);margin-bottom:20px}
+.price-list{list-style:none;margin-bottom:28px}
+.price-list li{padding:8px 0;font-size:14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--glass-border)}
+.price-list li:last-child{border-bottom:none}
+.price-list li svg{width:18px;height:18px;color:var(--green);flex-shrink:0}
+.btn-price{width:100%;padding:14px;border-radius:12px;font-family:'Heebo';font-size:15px;font-weight:700;cursor:pointer;transition:all .3s;border:2px solid var(--accent);background:transparent;color:var(--accent)}
+.btn-price:hover{background:var(--accent);color:#fff;box-shadow:0 4px 20px var(--glow-accent)}
+.btn-price.filled{background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;border-color:transparent}
+.btn-price.filled:hover{box-shadow:0 8px 30px var(--glow-accent)}
+.test-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.test-scroll::-webkit-scrollbar{display:none}
+.test-card{flex:0 0 340px;background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius);padding:28px;position:relative}
+.test-card::before{content:'"';position:absolute;top:16px;left:24px;font-size:48px;color:var(--accent);opacity:.3;font-family:serif}
+.test-stars{display:flex;gap:3px;margin-bottom:14px}
+.test-stars svg{width:16px;height:16px;color:var(--orange)}
+.test-text{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:18px}
+.test-author{display:flex;align-items:center;gap:12px}
+.test-avatar{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px}
+.test-name{font-size:14px;font-weight:600}
+.test-role{font-size:12px;color:var(--text2)}
+footer{border-top:1px solid var(--glass-border);margin-top:64px;padding:48px 24px 24px;position:relative;z-index:1}
+.foot-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:32px;margin-bottom:40px}
+.foot-col h4{font-size:14px;font-weight:700;margin-bottom:14px}
+.foot-col a{display:block;font-size:13px;color:var(--text2);text-decoration:none;padding:4px 0;transition:color .2s}
+.foot-col a:hover{color:var(--accent2)}
+.foot-bottom{max-width:1400px;margin:0 auto;padding-top:24px;border-top:1px solid var(--glass-border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot-bottom p{font-size:12px;color:var(--text2)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:1000;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.modal-overlay.show{display:flex}
+.modal{background:var(--surface);border:1px solid var(--glass-border);border-radius:var(--radius-lg);max-width:620px;width:100%;max-height:85vh;overflow-y:auto;box-shadow:0 25px 80px rgba(0,0,0,.5);animation:modalIn .3s ease}
+@keyframes modalIn{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
+.modal-head{padding:24px 24px 0;display:flex;gap:16px;align-items:flex-start}
+.modal-mi{width:72px;height:72px;border-radius:18px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.modal-mi svg{width:36px;height:36px;color:#fff}
+.modal-ti{flex:1}
+.modal-ti h2{font-size:20px;font-weight:700;margin-bottom:4px}
+.modal-ti p{font-size:14px;color:var(--text2)}
+.modal-close{width:36px;height:36px;border-radius:10px;border:1px solid var(--glass-border);background:var(--glass);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);transition:all .2s}
+.modal-close:hover{background:var(--red);color:#fff;border-color:var(--red)}
+.modal-close svg{width:18px;height:18px}
+.modal-body{padding:24px}
+.modal-shots{display:flex;gap:12px;overflow-x:auto;margin-bottom:20px;scrollbar-width:none}
+.modal-shots::-webkit-scrollbar{display:none}
+.modal-shot{flex:0 0 200px;height:120px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:13px;color:rgba(255,255,255,.8)}
+.modal-desc{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.modal-feats{list-style:none;margin-bottom:24px}
+.modal-feats li{display:flex;align-items:center;gap:10px;padding:10px 0;font-size:14px;border-bottom:1px solid var(--glass-border)}
+.modal-feats li:last-child{border-bottom:none}
+.modal-feats li svg{width:20px;height:20px;color:var(--accent2);flex-shrink:0}
+.modal-acts{display:flex;gap:12px}
+.modal-acts .btn-glow{flex:1;justify-content:center}
+.cart-panel{display:none;position:fixed;top:0;left:0;width:400px;height:100%;background:var(--surface);border-right:1px solid var(--glass-border);z-index:200;flex-direction:column;animation:cartIn .3s ease}
+.cart-panel.show{display:flex}
+@keyframes cartIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.cart-head{padding:20px 24px;border-bottom:1px solid var(--glass-border);display:flex;align-items:center;justify-content:space-between}
+.cart-head h3{font-size:18px;font-weight:700}
+.cart-items{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-item{display:flex;align-items:center;gap:12px;padding:14px 0;border-bottom:1px solid var(--glass-border)}
+.cart-ii{width:48px;height:48px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.cart-ii svg{width:24px;height:24px;color:#fff}
+.cart-info{flex:1}.cart-info h4{font-size:14px;font-weight:600}.cart-info p{font-size:11px;color:var(--text2)}
+.cart-price{font-size:14px;font-weight:700;color:var(--accent2)}
+.cart-rm{background:none;border:none;cursor:pointer;color:var(--text2);padding:4px}.cart-rm:hover{color:var(--red)}.cart-rm svg{width:18px;height:18px}
+.cart-foot{padding:20px 24px;border-top:1px solid var(--glass-border)}
+.cart-total{display:flex;justify-content:space-between;font-size:18px;font-weight:700;margin-bottom:16px}
+.cart-total .am{color:var(--accent2)}
+.btn-checkout{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent),#8b5cf6);color:#fff;border:none;border-radius:14px;font-family:'Heebo';font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 4px 20px var(--glow-accent)}
+.empty-cart{text-align:center;padding:48px 0;color:var(--text2)}
+.empty-cart svg{width:64px;height:64px;color:var(--glass-border);margin-bottom:12px}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.fade-in.vis{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.logo-text{display:none}.hero-card{flex-direction:column}.hero-visual{height:220px}.hero-3d{width:180px;height:180px}.cube-face{width:80px;height:80px}.cube-face:nth-child(1){transform:rotateY(0deg) translateZ(40px)}.cube-face:nth-child(2){transform:rotateY(180deg) translateZ(40px)}.cube-face:nth-child(3){transform:rotateY(90deg) translateZ(40px)}.cube-face:nth-child(4){transform:rotateY(-90deg) translateZ(40px)}.cube-face:nth-child(5){transform:rotateX(90deg) translateZ(40px)}.cube-face:nth-child(6){transform:rotateX(-90deg) translateZ(40px)}.float-badge{display:none}.hero-content{padding:24px}.hero-title{font-size:28px}.hero-sub{font-size:14px}.cat-grid{grid-template-columns:repeat(3,1fr);gap:10px}.cat-card{padding:16px 8px}.stats-inner{grid-template-columns:repeat(2,1fr)}.wide-grid{grid-template-columns:1fr}.price-grid{grid-template-columns:1fr}.cart-panel{width:100%}}
 </style>
 </head>
 <body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol>
+<symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+<symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+<symbol id="i-explore" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+<symbol id="i-school" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 6 8-4 8 4"/><path d="m18 10 4 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-8l4-2"/><path d="M14 22v-4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v4"/><path d="M18 5v17"/><path d="M6 5v17"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
+<symbol id="i-access" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="4" r="1"/><path d="m18 7-3 3"/><path d="m14 12-3 3"/><path d="M11 15v6"/><path d="M7 21h8"/><path d="M3 9h4l3-3"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></symbol>
+<symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/><path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4"/></symbol>
+<symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+<symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></symbol>
+<symbol id="i-bell2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/><path d="M4 2C2.8 3.7 2 5.7 2 8"/><path d="M22 8c0-2.3-.8-4.3-2-6"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></symbol>
+<symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></symbol>
+<symbol id="i-game" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></symbol>
+<symbol id="i-lang" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+<symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 13v-2z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></symbol>
+<symbol id="i-event" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></symbol>
+<symbol id="i-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+<symbol id="i-checklist" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 18H3"/><path d="m15 18 2 2 4-4"/><path d="M16 12H3"/><path d="M16 6H3"/></symbol>
+<symbol id="i-math" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4Z"/></symbol>
+</svg>
 
-<!-- ===== TOP BAR ===== -->
-<header class="top-bar">
-  <div class="top-bar-inner">
-    <a href="#" class="logo">
-      <div class="logo-icon">E</div>
-      <div class="logo-text">Edu<span>Play</span></div>
-    </a>
+<header class="top-bar"><div class="top-inner">
+<a href="#" class="logo"><div class="logo-mark"><svg><use href="#i-sparkle"/></svg></div><span class="logo-text">EduPlay</span></a>
+<div class="search"><input type="text" placeholder="חיפוש סוכנים, כלים ופתרונות חינוכיים..." id="searchInput"><svg class="search-icon"><use href="#i-search"/></svg></div>
+<div class="top-actions"><button class="btn-icon" onclick="toggleCart()"><svg><use href="#i-cart"/></svg><span class="dot" id="cartDot" style="display:none"></span></button><button class="btn-icon"><svg><use href="#i-bell"/></svg><span class="dot"></span></button><div class="btn-icon" style="background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff;font-weight:700;font-size:14px;cursor:pointer">מנ</div></div>
+</div></header>
 
-    <div class="search-bar">
-      <input type="text" placeholder="חיפוש סוכנים, כלים ופתרונות חינוכיים..." id="searchInput">
-      <span class="material-icons-round">search</span>
-    </div>
+<nav class="nav"><div class="nav-inner">
+<a class="nav-tab active" onclick="filterCat('all',this)"><svg><use href="#i-grid"/></svg> הכל</a>
+<a class="nav-tab" onclick="filterCat('agents',this)"><svg><use href="#i-bot"/></svg> סוכנים חכמים</a>
+<a class="nav-tab" onclick="filterCat('mgmt',this)"><svg><use href="#i-building"/></svg> ניהול בי"ס</a>
+<a class="nav-tab" onclick="filterCat('ped',this)"><svg><use href="#i-book"/></svg> פדגוגיה</a>
+<a class="nav-tab" onclick="filterCat('lic',this)"><svg><use href="#i-shield"/></svg> רישיונות</a>
+<a class="nav-tab" onclick="filterCat('com',this)"><svg><use href="#i-msg"/></svg> תקשורת</a>
+<a class="nav-tab" onclick="filterCat('assess',this)"><svg><use href="#i-chart"/></svg> הערכה</a>
+<a class="nav-tab" onclick="filterCat('welfare',this)"><svg><use href="#i-heart"/></svg> רווחה</a>
+<a class="nav-tab" onclick="filterCat('sped',this)"><svg><use href="#i-access"/></svg> חינוך מיוחד</a>
+</div></nav>
 
-    <div class="top-actions">
-      <button class="btn-icon" onclick="toggleCart()" title="עגלת קניות">
-        <span class="material-icons-round">shopping_cart</span>
-        <span class="badge" id="cartBadge" style="display:none">0</span>
-      </button>
-      <button class="btn-icon" title="התראות">
-        <span class="material-icons-round">notifications</span>
-      </button>
-      <button class="btn-icon" title="עזרה">
-        <span class="material-icons-round">help_outline</span>
-      </button>
-      <div class="avatar">מנ</div>
-    </div>
-  </div>
-</header>
-
-<!-- ===== NAV TABS ===== -->
-<nav class="nav-tabs">
-  <div class="nav-tabs-inner">
-    <a class="nav-tab active" onclick="filterCategory('all', this)">הכל</a>
-    <a class="nav-tab" onclick="filterCategory('agents', this)">סוכנים חכמים</a>
-    <a class="nav-tab" onclick="filterCategory('management', this)">ניהול בית ספר</a>
-    <a class="nav-tab" onclick="filterCategory('pedagogy', this)">פדגוגיה</a>
-    <a class="nav-tab" onclick="filterCategory('licenses', this)">רישיונות</a>
-    <a class="nav-tab" onclick="filterCategory('communication', this)">תקשורת</a>
-    <a class="nav-tab" onclick="filterCategory('assessment', this)">הערכה ומדידה</a>
-    <a class="nav-tab" onclick="filterCategory('welfare', this)">רווחה ורגש</a>
-    <a class="nav-tab" onclick="filterCategory('special', this)">חינוך מיוחד</a>
-  </div>
-</nav>
-
-<!-- ===== DEVICE FILTER ===== -->
-<div class="device-filter">
-  <a class="device-chip active">
-    <span class="material-icons-round">laptop</span> מחשב
-  </a>
-  <a class="device-chip">
-    <span class="material-icons-round">phone_android</span> נייד
-  </a>
-  <a class="device-chip">
-    <span class="material-icons-round">tablet</span> טאבלט
-  </a>
-  <a class="device-chip">
-    <span class="material-icons-round">tv</span> מסך אינטראקטיבי
-  </a>
-  <a class="device-chip">
-    <span class="material-icons-round">cloud</span> ענן
-  </a>
+<section class="hero"><div class="hero-card">
+<div class="hero-visual">
+<div class="hero-3d">
+<div class="orbit-ring"><div class="orbit-dot" style="color:var(--accent2)"></div></div>
+<div class="orbit-ring"><div class="orbit-dot" style="color:var(--pink)"></div></div>
+<div class="hero-cube"><div class="cube-face"><svg><use href="#i-bot"/></svg></div><div class="cube-face"><svg><use href="#i-school"/></svg></div><div class="cube-face"><svg><use href="#i-brain"/></svg></div><div class="cube-face"><svg><use href="#i-chart"/></svg></div><div class="cube-face"><svg><use href="#i-sparkle"/></svg></div><div class="cube-face"><svg><use href="#i-heart"/></svg></div></div>
 </div>
-
-<!-- ===== HERO BANNER ===== -->
-<section class="hero-section">
-  <div class="hero-banner">
-    <div class="hero-visual">
-      <div class="hero-graphic">
-        <div class="orbit"></div>
-        <div class="orbit"></div>
-        <div class="orbit"></div>
-        <div class="center-icon">
-          <span class="material-icons-round">school</span>
-        </div>
-        <div class="floating-icon"><span class="material-icons-round">smart_toy</span></div>
-        <div class="floating-icon"><span class="material-icons-round">auto_awesome</span></div>
-        <div class="floating-icon"><span class="material-icons-round">psychology</span></div>
-        <div class="floating-icon"><span class="material-icons-round">analytics</span></div>
-      </div>
-    </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="material-icons-round">verified</span>
-        חדש ב-EduPlay
-      </div>
-      <h1 class="hero-title">
-        <span class="highlight">EduPlay AI</span><br>
-        מערכת החינוך של המחר
-      </h1>
-      <p class="hero-subtitle">כל מה שמערכת החינוך צריכה במקום אחד: סוכנים חכמים, כלי ניהול, פדגוגיה, רישיונות ועוד</p>
-      <div class="hero-actions">
-        <a href="#products" class="btn-primary">
-          <span class="material-icons-round">explore</span>
-          גלו את החנות
-        </a>
-        <a href="#pricing" class="btn-secondary">
-          <span class="material-icons-round">play_circle</span>
-          צפו בהדגמה
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CATEGORIES ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">קטגוריות</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="category-grid">
-    <a class="category-card" onclick="filterCategory('agents')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #7c4dff, #536dfe);">
-        <span class="material-icons-round" style="color:white;">smart_toy</span>
-      </div>
-      <h3>סוכנים חכמים</h3>
-      <p>AI לכיתה</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('management')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #1a73e8, #4285f4);">
-        <span class="material-icons-round" style="color:white;">business</span>
-      </div>
-      <h3>ניהול בי"ס</h3>
-      <p>מערכות ניהול</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('pedagogy')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #00c853, #69f0ae);">
-        <span class="material-icons-round" style="color:white;">menu_book</span>
-      </div>
-      <h3>פדגוגיה</h3>
-      <p>למידה והוראה</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('licenses')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #ff6d00, #ffab40);">
-        <span class="material-icons-round" style="color:white;">verified_user</span>
-      </div>
-      <h3>רישיונות</h3>
-      <p>תוכנות מורשות</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('communication')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #e91e63, #f48fb1);">
-        <span class="material-icons-round" style="color:white;">forum</span>
-      </div>
-      <h3>תקשורת</h3>
-      <p>הורים וצוות</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('assessment')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #00bfa5, #64ffda);">
-        <span class="material-icons-round" style="color:white;">assessment</span>
-      </div>
-      <h3>הערכה ומדידה</h3>
-      <p>מבחנים ודוחות</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('welfare')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #f44336, #ef9a9a);">
-        <span class="material-icons-round" style="color:white;">favorite</span>
-      </div>
-      <h3>רווחה ורגש</h3>
-      <p>אקלים בי"ס</p>
-    </a>
-    <a class="category-card" onclick="filterCategory('special')">
-      <div class="category-icon" style="background: linear-gradient(135deg, #ffab00, #ffe082);">
-        <span class="material-icons-round" style="color:white;">accessibility_new</span>
-      </div>
-      <h3>חינוך מיוחד</h3>
-      <p>הנגשה והתאמות</p>
-    </a>
-  </div>
-</section>
-
-<!-- ===== TOP AGENTS ===== -->
-<section class="section fade-up" id="products">
-  <div class="section-header">
-    <h2 class="section-title">סוכנים חכמים מובילים</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="products-scroll">
-
-    <div class="product-card" onclick="openModal('agent-lesson')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #7c4dff, #536dfe);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">auto_awesome</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן מערכי שיעור</div>
-        <div class="product-dev">EduPlay AI</div>
-        <div class="product-meta">
-          <span class="product-rating">4.9 <span class="material-icons-round">star</span></span>
-          <span class="product-price">149 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="openModal('agent-parent')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #e91e63, #f06292);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">family_restroom</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן תקשורת הורים</div>
-        <div class="product-dev">ParentConnect</div>
-        <div class="product-meta">
-          <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          <span class="product-price">99 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="openModal('agent-assessment')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #00bfa5, #1de9b6);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">quiz</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן הערכה חכם</div>
-        <div class="product-dev">AssessAI</div>
-        <div class="product-meta">
-          <span class="product-rating">4.7 <span class="material-icons-round">star</span></span>
-          <span class="product-price">179 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="openModal('agent-behavior')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #ff6d00, #ffa726);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">psychology</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן ניהול התנהגות</div>
-        <div class="product-dev">BehaviorPro</div>
-        <div class="product-meta">
-          <span class="product-rating">4.6 <span class="material-icons-round">star</span></span>
-          <span class="product-price">129 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="openModal('agent-schedule')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #1a73e8, #42a5f5);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">calendar_month</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן מערכת שעות</div>
-        <div class="product-dev">ScheduleBot</div>
-        <div class="product-meta">
-          <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          <span class="product-price">199 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card" onclick="openModal('agent-sped')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #ffab00, #ffd54f);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">accessibility_new</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">סוכן חינוך מיוחד</div>
-        <div class="product-dev">IncludeAI</div>
-        <div class="product-meta">
-          <span class="product-rating">4.9 <span class="material-icons-round">star</span></span>
-          <span class="product-price">159 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== SCHOOL MANAGEMENT ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">ניהול בית ספר</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="products-grid">
-
-    <div class="product-wide" onclick="openModal('mgmt-erp')">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #1a73e8, #4285f4);">
-        <span class="material-icons-round">dashboard</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>EduERP - מערכת ניהול מלאה</h3>
-        <p>ניהול תלמידים, צוות, תקציב, נוכחות, ציונים, דוחות ולוחות זמנים - הכל במערכת אחת מבוססת ענן</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.9 <span class="material-icons-round">star</span></span>
-            <span style="color:var(--text-secondary)">2,340 בתי ספר</span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('EduERP', 499, '#1a73e8')">499 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide" onclick="openModal('mgmt-attendance')">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #00c853, #69f0ae);">
-        <span class="material-icons-round">fact_check</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>AttendEase - נוכחות חכמה</h3>
-        <p>מערכת נוכחות דיגיטלית עם זיהוי פנים, התראות הורים אוטומטיות ודוחות סיכום שבועיים</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.7 <span class="material-icons-round">star</span></span>
-            <span style="color:var(--text-secondary)">1,890 בתי ספר</span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('AttendEase', 89, '#00c853')">89 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide" onclick="openModal('mgmt-budget')">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #ff6d00, #ffab40);">
-        <span class="material-icons-round">account_balance_wallet</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>BudgetSchool - ניהול תקציב</h3>
-        <p>ניהול תקציב בית ספר, מעקב הוצאות, הפקת דוחות לרשות ובקרת תקציבים בזמן אמת</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.6 <span class="material-icons-round">star</span></span>
-            <span style="color:var(--text-secondary)">980 בתי ספר</span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('BudgetSchool', 149, '#ff6d00')">149 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide" onclick="openModal('mgmt-safety')">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #f44336, #ef5350);">
-        <span class="material-icons-round">security</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>SafeSchool - בטיחות וחירום</h3>
-        <p>ניהול תרגילי חירום, מערכת התרעה בזמן אמת, מיפוי סיכונים ודיווח תקריות</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-            <span style="color:var(--text-secondary)">1,450 בתי ספר</span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('SafeSchool', 199, '#f44336')">199 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PEDAGOGY ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">פדגוגיה ולמידה</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="products-scroll">
-
-    <div class="product-card" onclick="openModal('ped-lms')">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #00c853, #2e7d32);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">laptop_chromebook</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">LMS Pro - פלטפורמת למידה</div>
-        <div class="product-dev">EduTech IL</div>
-        <div class="product-meta">
-          <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          <span class="product-price">249 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #9c27b0, #ba68c8);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">videocam</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">VideoClass - שיעורים מוקלטים</div>
-        <div class="product-dev">MediaLearn</div>
-        <div class="product-meta">
-          <span class="product-rating">4.5 <span class="material-icons-round">star</span></span>
-          <span class="product-price">79 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #3f51b5, #7986cb);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">extension</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">GameLearn - למידה מבוססת משחק</div>
-        <div class="product-dev">PlayEdu</div>
-        <div class="product-meta">
-          <span class="product-rating">4.9 <span class="material-icons-round">star</span></span>
-          <span class="product-price">129 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #009688, #4db6ac);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">translate</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">LangBot - סוכן שפות</div>
-        <div class="product-dev">LinguaAI</div>
-        <div class="product-meta">
-          <span class="product-rating">4.7 <span class="material-icons-round">star</span></span>
-          <span class="product-price">89 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #795548, #a1887f);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">calculate</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">MathMentor - מתמטיקה אישית</div>
-        <div class="product-dev">NumAI</div>
-        <div class="product-meta">
-          <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          <span class="product-price">99 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== REMINDERS & COMMUNICATION ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">תזכורות ותקשורת</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="products-grid">
-
-    <div class="product-wide">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #e91e63, #f48fb1);">
-        <span class="material-icons-round">notifications_active</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>RemindEdu - תזכורות אוטומטיות</h3>
-        <p>תזכורות SMS, וואטסאפ ומייל למורים, הורים ותלמידים. אוטומציה מלאה לאירועים, מבחנים ופגישות</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          </div>
-          <button class="btn-install free" onclick="event.stopPropagation(); addToCart('RemindEdu', 0, '#e91e63')">חינם</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #00bcd4, #4dd0e1);">
-        <span class="material-icons-round">chat</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>ParentChat - תקשורת הורים</h3>
-        <p>פלטפורמת תקשורת מאובטחת בין הצוות החינוכי להורים, עם תרגום אוטומטי, תבניות וקבוצות</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.6 <span class="material-icons-round">star</span></span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('ParentChat', 69, '#00bcd4')">69 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #673ab7, #9575cd);">
-        <span class="material-icons-round">campaign</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>SchoolNews - עיתון בי"ס דיגיטלי</h3>
-        <p>יצירת ניוזלטר אוטומטי, עיתון בית ספר דיגיטלי ודפי מידע מעוצבים בקליק אחד</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.5 <span class="material-icons-round">star</span></span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('SchoolNews', 49, '#673ab7')">49 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-wide">
-      <div class="product-wide-icon" style="background: linear-gradient(135deg, #ff9800, #ffb74d);">
-        <span class="material-icons-round">event</span>
-      </div>
-      <div class="product-wide-info">
-        <h3>EventSchool - ניהול אירועים</h3>
-        <p>תכנון וניהול טקסים, ימי הורים, טיולים ואירועי בית ספר. כולל RSVP, לוגיסטיקה ותיעוד</p>
-        <div class="product-wide-footer">
-          <div class="product-meta">
-            <span class="product-rating">4.7 <span class="material-icons-round">star</span></span>
-          </div>
-          <button class="btn-install" onclick="event.stopPropagation(); addToCart('EventSchool', 89, '#ff9800')">89 ש"ח/חודש</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== STATS ===== -->
-<div class="stats-bar fade-up">
-  <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-number">1,200+</div>
-      <div class="stat-label">מוצרים וסוכנים</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">4,500+</div>
-      <div class="stat-label">בתי ספר משתמשים</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">98%</div>
-      <div class="stat-label">שביעות רצון</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">24/7</div>
-      <div class="stat-label">תמיכה טכנית</div>
-    </div>
-  </div>
+<div class="float-badge"><div class="fb-icon" style="background:var(--accent)"><svg><use href="#i-bot"/></svg></div>AI Agent</div>
+<div class="float-badge"><div class="fb-icon" style="background:var(--green)"><svg><use href="#i-check"/></svg></div>+2,400 בתי ספר</div>
+<div class="float-badge"><div class="fb-icon" style="background:var(--pink)"><svg><use href="#i-star"/></svg></div>4.9 דירוג</div>
 </div>
-
-<!-- ===== LICENSES ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">רישיונות בית ספר</h2>
-    <a href="#" class="section-link">הצג הכל <span class="material-icons-round">arrow_back</span></a>
-  </div>
-  <div class="products-scroll">
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #0078d4, #50b0f0);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">grid_view</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Microsoft 365 Education</div>
-        <div class="product-dev">Microsoft</div>
-        <div class="product-meta">
-          <span class="product-rating">4.7 <span class="material-icons-round">star</span></span>
-          <span class="product-tag" style="background: var(--secondary);">מוסדי</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #ea4335, #fbbc04, #34a853, #4285f4);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">school</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Google Workspace for Education</div>
-        <div class="product-dev">Google</div>
-        <div class="product-meta">
-          <span class="product-rating">4.8 <span class="material-icons-round">star</span></span>
-          <span class="product-tag" style="background: var(--secondary);">חינם</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #00d4aa, #00b4d8);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">draw</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Canva for Education</div>
-        <div class="product-dev">Canva</div>
-        <div class="product-meta">
-          <span class="product-rating">4.9 <span class="material-icons-round">star</span></span>
-          <span class="product-tag" style="background: var(--secondary);">חינם</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #ff6f00, #ff9100);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">code</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Scratch + Code.org</div>
-        <div class="product-dev">MIT / Code.org</div>
-        <div class="product-meta">
-          <span class="product-rating">4.6 <span class="material-icons-round">star</span></span>
-          <span class="product-tag" style="background: var(--secondary);">חינם</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-thumb" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
-        <div class="pattern"></div>
-        <span class="material-icons-round">ondemand_video</span>
-      </div>
-      <div class="product-info">
-        <div class="product-name">Zoom Education</div>
-        <div class="product-dev">Zoom</div>
-        <div class="product-meta">
-          <span class="product-rating">4.4 <span class="material-icons-round">star</span></span>
-          <span class="product-price">29 ש"ח/חודש</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== PRICING ===== -->
-<section class="section fade-up" id="pricing">
-  <div class="section-header">
-    <h2 class="section-title">חבילות לבתי ספר</h2>
-  </div>
-  <div class="pricing-grid">
-
-    <div class="pricing-card">
-      <div class="pricing-icon" style="background: linear-gradient(135deg, #90caf9, #42a5f5);">
-        <span class="material-icons-round">rocket_launch</span>
-      </div>
-      <h3>סטארטר</h3>
-      <div class="price">0 ש"ח <span>/ לנצח</span></div>
-      <div class="price-desc">לבתי ספר שרק מתחילים</div>
-      <ul class="pricing-features">
-        <li><span class="material-icons-round">check_circle</span> עד 3 סוכנים חינמיים</li>
-        <li><span class="material-icons-round">check_circle</span> ניהול כיתה בסיסי</li>
-        <li><span class="material-icons-round">check_circle</span> תזכורות SMS (100/חודש)</li>
-        <li><span class="material-icons-round">check_circle</span> דוחות בסיסיים</li>
-      </ul>
-      <button class="btn-pricing">התחילו בחינם</button>
-    </div>
-
-    <div class="pricing-card popular">
-      <div class="pricing-icon" style="background: linear-gradient(135deg, #1a73e8, #4285f4);">
-        <span class="material-icons-round">school</span>
-      </div>
-      <h3>בית ספר</h3>
-      <div class="price">799 ש"ח <span>/ חודש</span></div>
-      <div class="price-desc">לבית ספר בודד, עד 1,000 תלמידים</div>
-      <ul class="pricing-features">
-        <li><span class="material-icons-round">check_circle</span> כל הסוכנים ללא הגבלה</li>
-        <li><span class="material-icons-round">check_circle</span> מערכת ניהול מלאה</li>
-        <li><span class="material-icons-round">check_circle</span> תקשורת הורים אוטומטית</li>
-        <li><span class="material-icons-round">check_circle</span> הערכה ומדידה מתקדמת</li>
-        <li><span class="material-icons-round">check_circle</span> תמיכה 24/7</li>
-      </ul>
-      <button class="btn-pricing filled">התחילו עכשיו</button>
-    </div>
-
-    <div class="pricing-card">
-      <div class="pricing-icon" style="background: linear-gradient(135deg, #7c4dff, #536dfe);">
-        <span class="material-icons-round">apartment</span>
-      </div>
-      <h3>רשות / רשת</h3>
-      <div class="price">צרו קשר</div>
-      <div class="price-desc">לרשויות ורשתות חינוך</div>
-      <ul class="pricing-features">
-        <li><span class="material-icons-round">check_circle</span> הכל בחבילת בי"ס +</li>
-        <li><span class="material-icons-round">check_circle</span> דשבורד ניהולי מרכזי</li>
-        <li><span class="material-icons-round">check_circle</span> API ואינטגרציות</li>
-        <li><span class="material-icons-round">check_circle</span> SLA מובטח</li>
-        <li><span class="material-icons-round">check_circle</span> הדרכות צוות ייעודיות</li>
-      </ul>
-      <button class="btn-pricing">דברו איתנו</button>
-    </div>
-  </div>
-</section>
-
-<!-- ===== TESTIMONIALS ===== -->
-<section class="section fade-up">
-  <div class="section-header">
-    <h2 class="section-title">מה אומרים מנהלי בתי ספר</h2>
-  </div>
-  <div class="testimonials-scroll">
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-      </div>
-      <p class="testimonial-text">"מאז שהתחלנו להשתמש ב-EduPlay, חסכנו 15 שעות שבועיות של עבודה אדמיניסטרטיבית. הסוכנים החכמים הם מהפכה אמיתית."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #1a73e8, #4285f4);">ר</div>
-        <div>
-          <div class="testimonial-name">רונית כהן</div>
-          <div class="testimonial-role">מנהלת בי"ס עירוני ג', תל אביב</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-      </div>
-      <p class="testimonial-text">"סוכן התקשורת עם ההורים שינה לנו את החיים. ההורים מרגישים מחוברים, ואנחנו מצליחים לתת מענה מהיר לכל פנייה."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #e91e63, #f06292);">מ</div>
-        <div>
-          <div class="testimonial-name">מוחמד עבאסי</div>
-          <div class="testimonial-role">מנהל חט"ב, נצרת</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-      </div>
-      <p class="testimonial-text">"החבילה המוסדית חסכה לנו עשרות אלפי שקלים בשנה. במקום 8 מערכות שונות, הכל מרוכז ב-EduPlay."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #00c853, #69f0ae);">ש</div>
-        <div>
-          <div class="testimonial-name">שרה לוי</div>
-          <div class="testimonial-role">מפקחת מחוז מרכז, משרד החינוך</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <div class="testimonial-stars">
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-        <span class="material-icons-round">star</span>
-      </div>
-      <p class="testimonial-text">"סוכן החינוך המיוחד עזר לנו להפיק תוכניות אישיות ב-10 דקות במקום שעתיים. התלמידים מקבלים מענה מדויק יותר."</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar" style="background: linear-gradient(135deg, #ffab00, #ffd54f);">ד</div>
-        <div>
-          <div class="testimonial-name">דנה ברק</div>
-          <div class="testimonial-role">רכזת שילוב, בי"ס ממלכתי, באר שבע</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-col">
-      <h4>EduPlay</h4>
-      <a href="#">אודות</a>
-      <a href="#">הבלוג שלנו</a>
-      <a href="#">קריירה</a>
-      <a href="#">יצירת קשר</a>
-    </div>
-    <div class="footer-col">
-      <h4>מוצרים</h4>
-      <a href="#">סוכנים חכמים</a>
-      <a href="#">ניהול בי"ס</a>
-      <a href="#">פדגוגיה</a>
-      <a href="#">רישיונות</a>
-    </div>
-    <div class="footer-col">
-      <h4>תמיכה</h4>
-      <a href="#">מרכז עזרה</a>
-      <a href="#">הדרכות וידאו</a>
-      <a href="#">שאלות נפוצות</a>
-      <a href="#">קהילת מפתחים</a>
-    </div>
-    <div class="footer-col">
-      <h4>למפתחים</h4>
-      <a href="#">API Docs</a>
-      <a href="#">פרסמו מוצר</a>
-      <a href="#">שותפים</a>
-      <a href="#">סטנדרטים</a>
-    </div>
-    <div class="footer-col">
-      <h4>משפטי</h4>
-      <a href="#">תנאי שימוש</a>
-      <a href="#">מדיניות פרטיות</a>
-      <a href="#">אבטחת מידע</a>
-      <a href="#">נגישות</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 EduPlay. כל הזכויות שמורות. פותח עם אהבה לחינוך הישראלי.</p>
-    <div class="footer-links">
-      <a href="#">עברית</a>
-      <a href="#">English</a>
-      <a href="#">العربية</a>
-    </div>
-  </div>
-</footer>
-
-<!-- ===== CART PANEL ===== -->
-<div class="cart-panel" id="cartPanel">
-  <div class="cart-header">
-    <h3>העגלה שלי</h3>
-    <button class="modal-close" onclick="toggleCart()">
-      <span class="material-icons-round">close</span>
-    </button>
-  </div>
-  <div class="cart-items" id="cartItems">
-    <div class="empty-cart">
-      <span class="material-icons-round">shopping_cart</span>
-      <p>העגלה ריקה</p>
-    </div>
-  </div>
-  <div class="cart-footer">
-    <div class="cart-total">
-      <span>סה"כ:</span>
-      <span class="amount" id="cartTotal">0 ש"ח/חודש</span>
-    </div>
-    <button class="btn-checkout">המשך לתשלום</button>
-  </div>
+<div class="hero-content">
+<div class="hero-label"><span class="pulse"></span> חדש ב-2026</div>
+<h1 class="hero-title"><span class="grad">EduPlay</span><br>מערכת החינוך של המחר</h1>
+<p class="hero-sub">סוכנים חכמים, כלי ניהול, פדגוגיה, רישיונות, תזכורות ועוד. הכל במקום אחד, מותאם לבתי ספר ישראליים.</p>
+<div class="hero-btns"><button class="btn-glow primary"><svg><use href="#i-explore"/></svg> גלו את החנות</button><button class="btn-glow secondary"><svg><use href="#i-play"/></svg> צפו בהדגמה</button></div>
 </div>
+</div></section>
 
-<!-- ===== PRODUCT MODAL ===== -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <div class="modal-icon" id="modalIcon">
-        <span class="material-icons-round" id="modalIconInner">smart_toy</span>
-      </div>
-      <div class="modal-title-area">
-        <h2 id="modalTitle">שם המוצר</h2>
-        <p id="modalDev">מפתח</p>
-      </div>
-      <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('show')">
-        <span class="material-icons-round">close</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div class="modal-screenshots" id="modalScreenshots"></div>
-      <p class="modal-desc" id="modalDesc"></p>
-      <ul class="modal-features" id="modalFeatures"></ul>
-      <div class="modal-actions">
-        <button class="btn-primary" id="modalCTA" onclick="addModalToCart()">
-          <span class="material-icons-round">shopping_cart</span>
-          <span id="modalPrice">הוסף לעגלה</span>
-        </button>
-        <button class="btn-secondary" style="border-color: var(--border); color: var(--text); background: var(--bg);">
-          <span class="material-icons-round">bookmark_border</span>
-          שמור
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--accent)"></span> קטגוריות</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="cat-grid">
+<div class="cat-card" style="--cat-color:var(--accent)"><div class="cat-icon" style="background:linear-gradient(135deg,var(--accent),#8b5cf6)"><svg style="color:#fff"><use href="#i-bot"/></svg></div><h3>סוכנים חכמים</h3><p>AI לכיתה</p></div>
+<div class="cat-card" style="--cat-color:var(--blue)"><div class="cat-icon" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)"><svg style="color:#fff"><use href="#i-building"/></svg></div><h3>ניהול בי"ס</h3><p>מערכות ניהול</p></div>
+<div class="cat-card" style="--cat-color:var(--green)"><div class="cat-icon" style="background:linear-gradient(135deg,var(--green),#34d399)"><svg style="color:#fff"><use href="#i-book"/></svg></div><h3>פדגוגיה</h3><p>למידה והוראה</p></div>
+<div class="cat-card" style="--cat-color:var(--orange)"><div class="cat-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg style="color:#fff"><use href="#i-shield"/></svg></div><h3>רישיונות</h3><p>תוכנות מורשות</p></div>
+<div class="cat-card" style="--cat-color:var(--pink)"><div class="cat-icon" style="background:linear-gradient(135deg,var(--pink),#f472b6)"><svg style="color:#fff"><use href="#i-msg"/></svg></div><h3>תקשורת</h3><p>הורים וצוות</p></div>
+<div class="cat-card" style="--cat-color:var(--accent2)"><div class="cat-icon" style="background:linear-gradient(135deg,var(--accent2),#2dd4bf)"><svg style="color:#fff"><use href="#i-chart"/></svg></div><h3>הערכה ומדידה</h3><p>מבחנים ודוחות</p></div>
+<div class="cat-card" style="--cat-color:var(--red)"><div class="cat-icon" style="background:linear-gradient(135deg,#ef4444,#f87171)"><svg style="color:#fff"><use href="#i-heart"/></svg></div><h3>רווחה ורגש</h3><p>אקלים בי"ס</p></div>
+<div class="cat-card" style="--cat-color:var(--orange)"><div class="cat-icon" style="background:linear-gradient(135deg,#eab308,#facc15)"><svg style="color:#fff"><use href="#i-access"/></svg></div><h3>חינוך מיוחד</h3><p>הנגשה והתאמות</p></div>
+</div></section>
+
+<section class="section fade-in" id="products"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--accent2)"></span> סוכנים חכמים מובילים</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="prod-scroll">
+<div class="prod-card" data-id="agent-lesson"><div class="prod-thumb" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)"><svg><use href="#i-sparkle"/></svg><div class="prod-badge" style="background:rgba(0,206,201,.2);color:var(--accent2)">AI</div></div><div class="prod-info"><div class="prod-name">סוכן מערכי שיעור</div><div class="prod-dev">EduPlay AI</div><div class="prod-meta"><span class="prod-stars">4.9 <svg><use href="#i-star"/></svg></span><span class="prod-price">149 ש"ח/חודש</span></div></div></div>
+<div class="prod-card" data-id="agent-parent"><div class="prod-thumb" style="background:linear-gradient(135deg,#e91e63,#f48fb1)"><svg><use href="#i-users"/></svg><div class="prod-badge" style="background:rgba(253,121,168,.2);color:var(--pink)">HOT</div></div><div class="prod-info"><div class="prod-name">סוכן תקשורת הורים</div><div class="prod-dev">ParentConnect</div><div class="prod-meta"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><span class="prod-price">99 ש"ח/חודש</span></div></div></div>
+<div class="prod-card" data-id="agent-assess"><div class="prod-thumb" style="background:linear-gradient(135deg,#00bfa5,#1de9b6)"><svg><use href="#i-checklist"/></svg></div><div class="prod-info"><div class="prod-name">סוכן הערכה חכם</div><div class="prod-dev">AssessAI</div><div class="prod-meta"><span class="prod-stars">4.7 <svg><use href="#i-star"/></svg></span><span class="prod-price">179 ש"ח/חודש</span></div></div></div>
+<div class="prod-card" data-id="agent-behavior"><div class="prod-thumb" style="background:linear-gradient(135deg,#ff6d00,#ffa726)"><svg><use href="#i-brain"/></svg></div><div class="prod-info"><div class="prod-name">סוכן ניהול התנהגות</div><div class="prod-dev">BehaviorPro</div><div class="prod-meta"><span class="prod-stars">4.6 <svg><use href="#i-star"/></svg></span><span class="prod-price">129 ש"ח/חודש</span></div></div></div>
+<div class="prod-card" data-id="agent-schedule"><div class="prod-thumb" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)"><svg><use href="#i-calendar"/></svg></div><div class="prod-info"><div class="prod-name">סוכן מערכת שעות</div><div class="prod-dev">ScheduleBot</div><div class="prod-meta"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><span class="prod-price">199 ש"ח/חודש</span></div></div></div>
+<div class="prod-card" data-id="agent-sped"><div class="prod-thumb" style="background:linear-gradient(135deg,#eab308,#fde047)"><svg><use href="#i-access"/></svg></div><div class="prod-info"><div class="prod-name">סוכן חינוך מיוחד</div><div class="prod-dev">IncludeAI</div><div class="prod-meta"><span class="prod-stars">4.9 <svg><use href="#i-star"/></svg></span><span class="prod-price">159 ש"ח/חודש</span></div></div></div>
+</div></section>
+
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--blue)"></span> ניהול בית ספר</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="wide-grid">
+<div class="wide-card" style="--card-accent:#3b82f6" data-id="mgmt-erp"><div class="wide-icon" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)"><svg><use href="#i-dashboard"/></svg></div><div class="wide-info"><h3>EduERP - מערכת ניהול מלאה</h3><p>ניהול תלמידים, צוות, תקציב, נוכחות, ציונים, דוחות ולוחות זמנים - הכל במערכת אחת</p><div class="wide-foot"><span class="prod-stars">4.9 <svg><use href="#i-star"/></svg> 2,340 בתי ספר</span><button class="btn-get" onclick="event.stopPropagation();addToCart('EduERP',499,'#3b82f6')">499 ש"ח/חודש</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--green)" data-id="mgmt-attend"><div class="wide-icon" style="background:linear-gradient(135deg,var(--green),#34d399)"><svg><use href="#i-checklist"/></svg></div><div class="wide-info"><h3>AttendEase - נוכחות חכמה</h3><p>מערכת נוכחות דיגיטלית עם זיהוי פנים, התראות הורים אוטומטיות ודוחות סיכום</p><div class="wide-foot"><span class="prod-stars">4.7 <svg><use href="#i-star"/></svg> 1,890 בתי ספר</span><button class="btn-get" onclick="event.stopPropagation();addToCart('AttendEase',89,'#00b894')">89 ש"ח/חודש</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--orange)" data-id="mgmt-budget"><div class="wide-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg><use href="#i-wallet"/></svg></div><div class="wide-info"><h3>BudgetSchool - ניהול תקציב</h3><p>ניהול תקציב בית ספר, מעקב הוצאות, הפקת דוחות לרשות ובקרה בזמן אמת</p><div class="wide-foot"><span class="prod-stars">4.6 <svg><use href="#i-star"/></svg> 980 בתי ספר</span><button class="btn-get" onclick="event.stopPropagation();addToCart('BudgetSchool',149,'#f59e0b')">149 ש"ח/חודש</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--red)" data-id="mgmt-safety"><div class="wide-icon" style="background:linear-gradient(135deg,#ef4444,#f87171)"><svg><use href="#i-shield"/></svg></div><div class="wide-info"><h3>SafeSchool - בטיחות וחירום</h3><p>ניהול תרגילי חירום, מערכת התרעה בזמן אמת, מיפוי סיכונים ודיווח</p><div class="wide-foot"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg> 1,450 בתי ספר</span><button class="btn-get" onclick="event.stopPropagation();addToCart('SafeSchool',199,'#ef4444')">199 ש"ח/חודש</button></div></div></div>
+</div></section>
+
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--green)"></span> פדגוגיה ולמידה</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="prod-scroll">
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#059669,#10b981)"><svg><use href="#i-monitor"/></svg></div><div class="prod-info"><div class="prod-name">LMS Pro - פלטפורמת למידה</div><div class="prod-dev">EduTech IL</div><div class="prod-meta"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><span class="prod-price">249 ש"ח/חודש</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)"><svg><use href="#i-video"/></svg></div><div class="prod-info"><div class="prod-name">VideoClass - שיעורים מוקלטים</div><div class="prod-dev">MediaLearn</div><div class="prod-meta"><span class="prod-stars">4.5 <svg><use href="#i-star"/></svg></span><span class="prod-price">79 ש"ח/חודש</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#4f46e5,#818cf8)"><svg><use href="#i-game"/></svg></div><div class="prod-info"><div class="prod-name">GameLearn - למידה מבוססת משחק</div><div class="prod-dev">PlayEdu</div><div class="prod-meta"><span class="prod-stars">4.9 <svg><use href="#i-star"/></svg></span><span class="prod-price">129 ש"ח/חודש</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#0891b2,#22d3ee)"><svg><use href="#i-lang"/></svg></div><div class="prod-info"><div class="prod-name">LangBot - סוכן שפות</div><div class="prod-dev">LinguaAI</div><div class="prod-meta"><span class="prod-stars">4.7 <svg><use href="#i-star"/></svg></span><span class="prod-price">89 ש"ח/חודש</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#78350f,#b45309)"><svg><use href="#i-math"/></svg></div><div class="prod-info"><div class="prod-name">MathMentor - מתמטיקה אישית</div><div class="prod-dev">NumAI</div><div class="prod-meta"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><span class="prod-price">99 ש"ח/חודש</span></div></div></div>
+</div></section>
+
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--pink)"></span> תזכורות ותקשורת</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="wide-grid">
+<div class="wide-card" style="--card-accent:var(--pink)"><div class="wide-icon" style="background:linear-gradient(135deg,var(--pink),#f472b6)"><svg><use href="#i-bell2"/></svg></div><div class="wide-info"><h3>RemindEdu - תזכורות אוטומטיות</h3><p>תזכורות SMS, וואטסאפ ומייל למורים, הורים ותלמידים. אוטומציה מלאה</p><div class="wide-foot"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><button class="btn-get free" onclick="event.stopPropagation();addToCart('RemindEdu',0,'#00b894')">חינם</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--accent2)"><div class="wide-icon" style="background:linear-gradient(135deg,#0891b2,#22d3ee)"><svg><use href="#i-msg"/></svg></div><div class="wide-info"><h3>ParentChat - תקשורת הורים</h3><p>פלטפורמת תקשורת מאובטחת עם תרגום אוטומטי, תבניות וקבוצות</p><div class="wide-foot"><span class="prod-stars">4.6 <svg><use href="#i-star"/></svg></span><button class="btn-get" onclick="event.stopPropagation();addToCart('ParentChat',69,'#0891b2')">69 ש"ח/חודש</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--accent)"><div class="wide-icon" style="background:linear-gradient(135deg,var(--accent),#8b5cf6)"><svg><use href="#i-megaphone"/></svg></div><div class="wide-info"><h3>SchoolNews - עיתון בי"ס דיגיטלי</h3><p>יצירת ניוזלטר אוטומטי, עיתון בית ספר דיגיטלי ודפי מידע מעוצבים</p><div class="wide-foot"><span class="prod-stars">4.5 <svg><use href="#i-star"/></svg></span><button class="btn-get" onclick="event.stopPropagation();addToCart('SchoolNews',49,'#6c5ce7')">49 ש"ח/חודש</button></div></div></div>
+<div class="wide-card" style="--card-accent:var(--orange)"><div class="wide-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><svg><use href="#i-event"/></svg></div><div class="wide-info"><h3>EventSchool - ניהול אירועים</h3><p>תכנון וניהול טקסים, ימי הורים, טיולים ואירועי בית ספר</p><div class="wide-foot"><span class="prod-stars">4.7 <svg><use href="#i-star"/></svg></span><button class="btn-get" onclick="event.stopPropagation();addToCart('EventSchool',89,'#f59e0b')">89 ש"ח/חודש</button></div></div></div>
+</div></section>
+
+<div class="stats-bar fade-in"><div class="stats-inner">
+<div class="stat-card"><div class="stat-glow" style="background:var(--accent)"></div><div class="stat-num" style="background:linear-gradient(135deg,var(--accent),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent">1,200+</div><div class="stat-label">מוצרים וסוכנים</div></div>
+<div class="stat-card"><div class="stat-glow" style="background:var(--accent2)"></div><div class="stat-num" style="background:linear-gradient(135deg,var(--accent2),#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent">4,500+</div><div class="stat-label">בתי ספר משתמשים</div></div>
+<div class="stat-card"><div class="stat-glow" style="background:var(--green)"></div><div class="stat-num" style="background:linear-gradient(135deg,var(--green),#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent">98%</div><div class="stat-label">שביעות רצון</div></div>
+<div class="stat-card"><div class="stat-glow" style="background:var(--pink)"></div><div class="stat-num" style="background:linear-gradient(135deg,var(--pink),#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">24/7</div><div class="stat-label">תמיכה טכנית</div></div>
+</div></div>
+
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--orange)"></span> רישיונות בית ספר</h2><span class="sec-more">הצג הכל <svg><use href="#i-arrow"/></svg></span></div>
+<div class="prod-scroll">
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#0078d4,#50b0f0)"><svg><use href="#i-grid"/></svg><div class="prod-badge" style="background:rgba(0,184,148,.2);color:var(--green)">מוסדי</div></div><div class="prod-info"><div class="prod-name">Microsoft 365 Education</div><div class="prod-dev">Microsoft</div><div class="prod-meta"><span class="prod-stars">4.7 <svg><use href="#i-star"/></svg></span><span class="prod-price">פנו אלינו</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#ea4335,#34a853)"><svg><use href="#i-school"/></svg><div class="prod-badge" style="background:rgba(0,184,148,.2);color:var(--green)">חינם</div></div><div class="prod-info"><div class="prod-name">Google Workspace Education</div><div class="prod-dev">Google</div><div class="prod-meta"><span class="prod-stars">4.8 <svg><use href="#i-star"/></svg></span><span class="prod-price" style="color:var(--green)">חינם</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#00d4aa,#00b4d8)"><svg><use href="#i-pen"/></svg><div class="prod-badge" style="background:rgba(0,184,148,.2);color:var(--green)">חינם</div></div><div class="prod-info"><div class="prod-name">Canva for Education</div><div class="prod-dev">Canva</div><div class="prod-meta"><span class="prod-stars">4.9 <svg><use href="#i-star"/></svg></span><span class="prod-price" style="color:var(--green)">חינם</span></div></div></div>
+<div class="prod-card"><div class="prod-thumb" style="background:linear-gradient(135deg,#ff6f00,#ff9100)"><svg><use href="#i-code"/></svg><div class="prod-badge" style="background:rgba(0,184,148,.2);color:var(--green)">חינם</div></div><div class="prod-info"><div class="prod-name">Scratch + Code.org</div><div class="prod-dev">MIT / Code.org</div><div class="prod-meta"><span class="prod-stars">4.6 <svg><use href="#i-star"/></svg></span><span class="prod-price" style="color:var(--green)">חינם</span></div></div></div>
+</div></section>
+
+<section class="section fade-in" id="pricing"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--accent)"></span> חבילות לבתי ספר</h2></div>
+<div class="price-grid">
+<div class="price-card"><div class="price-icon" style="background:linear-gradient(135deg,#60a5fa,#93c5fd)"><svg><use href="#i-rocket"/></svg></div><h3>סטארטר</h3><div class="price-amount">0 ש"ח <span>/ לנצח</span></div><div class="price-desc">לבתי ספר שרק מתחילים</div><ul class="price-list"><li><svg><use href="#i-check"/></svg> עד 3 סוכנים חינמיים</li><li><svg><use href="#i-check"/></svg> ניהול כיתה בסיסי</li><li><svg><use href="#i-check"/></svg> תזכורות SMS (100/חודש)</li><li><svg><use href="#i-check"/></svg> דוחות בסיסיים</li></ul><button class="btn-price">התחילו בחינם</button></div>
+<div class="price-card pop"><div class="price-icon" style="background:linear-gradient(135deg,var(--accent),#8b5cf6)"><svg><use href="#i-school"/></svg></div><h3>בית ספר</h3><div class="price-amount" style="background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">799 ש"ח <span style="-webkit-text-fill-color:var(--text2)">/ חודש</span></div><div class="price-desc">לבית ספר בודד, עד 1,000 תלמידים</div><ul class="price-list"><li><svg><use href="#i-check"/></svg> כל הסוכנים ללא הגבלה</li><li><svg><use href="#i-check"/></svg> מערכת ניהול מלאה</li><li><svg><use href="#i-check"/></svg> תקשורת הורים אוטומטית</li><li><svg><use href="#i-check"/></svg> הערכה ומדידה מתקדמת</li><li><svg><use href="#i-check"/></svg> תמיכה 24/7</li></ul><button class="btn-price filled">התחילו עכשיו</button></div>
+<div class="price-card"><div class="price-icon" style="background:linear-gradient(135deg,var(--accent2),#2dd4bf)"><svg><use href="#i-building"/></svg></div><h3>רשות / רשת</h3><div class="price-amount">צרו קשר</div><div class="price-desc">לרשויות ורשתות חינוך</div><ul class="price-list"><li><svg><use href="#i-check"/></svg> הכל בחבילת בי"ס +</li><li><svg><use href="#i-check"/></svg> דשבורד ניהולי מרכזי</li><li><svg><use href="#i-check"/></svg> API ואינטגרציות</li><li><svg><use href="#i-check"/></svg> SLA מובטח</li><li><svg><use href="#i-check"/></svg> הדרכות צוות ייעודיות</li></ul><button class="btn-price">דברו איתנו</button></div>
+</div></section>
+
+<section class="section fade-in"><div class="sec-head"><h2 class="sec-title"><span class="dot" style="background:var(--green)"></span> מה אומרים מנהלי בתי ספר</h2></div>
+<div class="test-scroll">
+<div class="test-card"><div class="test-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="test-text">"מאז שהתחלנו להשתמש ב-EduPlay, חסכנו 15 שעות שבועיות של עבודה אדמיניסטרטיבית. הסוכנים החכמים הם מהפכה אמיתית."</p><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,var(--accent),#8b5cf6)">ר</div><div><div class="test-name">רונית כהן</div><div class="test-role">מנהלת בי"ס עירוני ג', תל אביב</div></div></div></div>
+<div class="test-card"><div class="test-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="test-text">"סוכן התקשורת עם ההורים שינה לנו את החיים. ההורים מרגישים מחוברים, ואנחנו מצליחים לתת מענה מהיר."</p><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,var(--pink),#f472b6)">מ</div><div><div class="test-name">מוחמד עבאסי</div><div class="test-role">מנהל חט"ב, נצרת</div></div></div></div>
+<div class="test-card"><div class="test-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="test-text">"החבילה המוסדית חסכה לנו עשרות אלפי שקלים בשנה. במקום 8 מערכות שונות, הכל מרוכז ב-EduPlay."</p><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,var(--green),#34d399)">ש</div><div><div class="test-name">שרה לוי</div><div class="test-role">מפקחת מחוז מרכז, משרד החינוך</div></div></div></div>
+<div class="test-card"><div class="test-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div><p class="test-text">"סוכן החינוך המיוחד עזר לנו להפיק תוכניות אישיות ב-10 דקות במקום שעתיים."</p><div class="test-author"><div class="test-avatar" style="background:linear-gradient(135deg,#eab308,#fde047)">ד</div><div><div class="test-name">דנה ברק</div><div class="test-role">רכזת שילוב, באר שבע</div></div></div></div>
+</div></section>
+
+<footer><div class="foot-inner">
+<div class="foot-col"><h4>EduPlay</h4><a href="#">אודות</a><a href="#">הבלוג</a><a href="#">קריירה</a><a href="#">יצירת קשר</a></div>
+<div class="foot-col"><h4>מוצרים</h4><a href="#">סוכנים חכמים</a><a href="#">ניהול בי"ס</a><a href="#">פדגוגיה</a><a href="#">רישיונות</a></div>
+<div class="foot-col"><h4>תמיכה</h4><a href="#">מרכז עזרה</a><a href="#">הדרכות וידאו</a><a href="#">שאלות נפוצות</a><a href="#">קהילה</a></div>
+<div class="foot-col"><h4>למפתחים</h4><a href="#">API Docs</a><a href="#">פרסמו מוצר</a><a href="#">שותפים</a><a href="#">סטנדרטים</a></div>
+<div class="foot-col"><h4>משפטי</h4><a href="#">תנאי שימוש</a><a href="#">פרטיות</a><a href="#">אבטחת מידע</a><a href="#">נגישות</a></div>
+</div><div class="foot-bottom"><p>&copy; 2026 EduPlay. כל הזכויות שמורות.</p><div style="display:flex;gap:16px"><a href="#" style="color:var(--text2);text-decoration:none;font-size:12px">עברית</a><a href="#" style="color:var(--text2);text-decoration:none;font-size:12px">English</a><a href="#" style="color:var(--text2);text-decoration:none;font-size:12px">العربية</a></div></div></footer>
+
+<div class="cart-panel" id="cartPanel"><div class="cart-head"><h3>העגלה שלי</h3><button class="modal-close" onclick="toggleCart()"><svg><use href="#i-x"/></svg></button></div><div class="cart-items" id="cartItems"><div class="empty-cart"><svg style="width:64px;height:64px;color:var(--glass-border)"><use href="#i-cart"/></svg><p>העגלה ריקה</p></div></div><div class="cart-foot"><div class="cart-total"><span>סה"כ:</span><span class="am" id="cartTotal">0 ש"ח/חודש</span></div><button class="btn-checkout">המשך לתשלום</button></div></div>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)"><div class="modal" onclick="event.stopPropagation()">
+<div class="modal-head"><div class="modal-mi" id="mIcon"><svg id="mIconSvg"><use href="#i-bot"/></svg></div><div class="modal-ti"><h2 id="mTitle"></h2><p id="mDev"></p></div><button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('show')"><svg><use href="#i-x"/></svg></button></div>
+<div class="modal-body"><div class="modal-shots" id="mShots"></div><p class="modal-desc" id="mDesc"></p><ul class="modal-feats" id="mFeats"></ul><div class="modal-acts"><button class="btn-glow primary" onclick="addModalToCart()"><svg><use href="#i-cart"/></svg><span id="mPrice"></span></button><button class="btn-glow secondary"><svg><use href="#i-heart"/></svg> שמור</button></div></div>
+</div></div>
 
 <script>
-// ===== DATA =====
-const products = {
-  'agent-lesson': {
-    title: 'סוכן מערכי שיעור',
-    dev: 'EduPlay AI',
-    icon: 'auto_awesome',
-    color: '#7c4dff',
-    price: 149,
-    desc: 'סוכן AI שמייצר מערכי שיעור מותאמים אישית לכל מקצוע, שכבת גיל ורמת כיתה. מבוסס על תכנית הלימודים של משרד החינוך, כולל בידול ודיפרנציאציה אוטומטית.',
-    features: [
-      'יצירת מערך שיעור מלא ב-30 שניות',
-      'התאמה לתכנית הלימודים הישראלית',
-      'בידול אוטומטי ל-3 רמות',
-      'חומרי עזר ודפי עבודה מובנים',
-      'שיתוף עם צוות המקצוע',
-      'ארכיון מערכי שיעור חכם'
-    ]
-  },
-  'agent-parent': {
-    title: 'סוכן תקשורת הורים',
-    dev: 'ParentConnect',
-    icon: 'family_restroom',
-    color: '#e91e63',
-    price: 99,
-    desc: 'סוכן AI שמנהל את כל התקשורת עם ההורים: הודעות, עדכונים, זימון פגישות ומענה אוטומטי לשאלות נפוצות. תומך בעברית, ערבית ואנגלית.',
-    features: [
-      'מענה אוטומטי 24/7 לשאלות הורים',
-      'תרגום אוטומטי לערבית ואנגלית',
-      'זימון פגישות הורים חכם',
-      'הודעות מותאמות לכל הורה',
-      'דוח תקשורת שבועי למנהל/ת',
-      'אינטגרציה עם וואטסאפ וSMS'
-    ]
-  },
-  'agent-assessment': {
-    title: 'סוכן הערכה חכם',
-    dev: 'AssessAI',
-    icon: 'quiz',
-    color: '#00bfa5',
-    price: 179,
-    desc: 'מערכת הערכה מבוססת AI שיוצרת מבחנים, בודקת תשובות אוטומטית ומפיקה דוחות מפורטים על התקדמות תלמידים.',
-    features: [
-      'יצירת מבחנים אוטומטית לפי נושא',
-      'בדיקת תשובות פתוחות ב-AI',
-      'ניתוח פערים ומיפוי ידע',
-      'דוחות הורים אוטומטיים',
-      'בנק שאלות עם 50,000+ שאלות',
-      'התאמה לתלמידי חינוך מיוחד'
-    ]
-  },
-  'agent-behavior': {
-    title: 'סוכן ניהול התנהגות',
-    dev: 'BehaviorPro',
-    icon: 'psychology',
-    color: '#ff6d00',
-    price: 129,
-    desc: 'מערכת ניהול התנהגות חיובית שעוזרת למורים לתעד, לנתח ולשפר את האקלים הכיתתי והבית ספרי.',
-    features: [
-      'תיעוד התנהגות בקליק אחד',
-      'ניתוח דפוסים ומגמות',
-      'תוכניות התערבות מותאמות',
-      'דיווח אוטומטי ליועצת ומנהל/ת',
-      'מערכת תגמולים דיגיטלית',
-      'קשר עם הורים בזמן אמת'
-    ]
-  },
-  'agent-schedule': {
-    title: 'סוכן מערכת שעות',
-    dev: 'ScheduleBot',
-    icon: 'calendar_month',
-    color: '#1a73e8',
-    price: 199,
-    desc: 'AI שבונה מערכת שעות אופטימלית לבית הספר תוך התחשבות בכל האילוצים: חדרים, מורים, העדפות ותקנות.',
-    features: [
-      'בניית מערכת שעות ב-5 דקות',
-      'ניהול אילוצים מורכבים',
-      'חלופות במקרה היעדרות מורה',
-      'סנכרון עם Google/Outlook',
-      'התראות שינויים בזמן אמת',
-      'אופטימיזציה של ניצול חדרים'
-    ]
-  },
-  'agent-sped': {
-    title: 'סוכן חינוך מיוחד',
-    dev: 'IncludeAI',
-    icon: 'accessibility_new',
-    color: '#ffab00',
-    price: 159,
-    desc: 'סוכן AI שמסייע בהפקת תוכניות אישיות (תל"א), התאמות מבחנים, ומעקב אחר יעדים של תלמידים עם צרכים מיוחדים.',
-    features: [
-      'הפקת תוכנית אישית (תל"א) אוטומטית',
-      'התאמות מבחנים בקליק',
-      'מעקב יעדים רבעוני',
-      'דוחות לוועדות שילוב',
-      'בנק אסטרטגיות הוראה מותאמות',
-      'קשר עם גורמי טיפול חיצוניים'
-    ]
-  },
-  'mgmt-erp': {
-    title: 'EduERP - מערכת ניהול מלאה',
-    dev: 'EduPlay Enterprise',
-    icon: 'dashboard',
-    color: '#1a73e8',
-    price: 499,
-    desc: 'מערכת ERP מלאה לבית ספר הכוללת ניהול תלמידים, צוות, תקציב, נוכחות, ציונים, דוחות ולוחות זמנים.',
-    features: [
-      'ניהול 1,000+ תלמידים',
-      'מודול כח אדם ומשכורות',
-      'ניהול תקציב ורכש',
-      'מערכת ציונים ותעודות',
-      'דוחות BI למנהל/ת',
-      'אינטגרציה עם משב"ס'
-    ]
-  },
-  'mgmt-attendance': {
-    title: 'AttendEase - נוכחות חכמה',
-    dev: 'AttendTech',
-    icon: 'fact_check',
-    color: '#00c853',
-    price: 89,
-    desc: 'מערכת נוכחות דיגיטלית עם זיהוי פנים, התראות הורים אוטומטיות ודוחות סיכום.',
-    features: [
-      'רישום נוכחות בקליק / זיהוי פנים',
-      'התראה אוטומטית להורים על היעדרות',
-      'דוחות נוכחות שבועיים ותקופתיים',
-      'זיהוי דפוסי היעדרות',
-      'אינטגרציה עם מערכת השעות',
-      'דיווח למשרד החינוך'
-    ]
-  },
-  'mgmt-budget': {
-    title: 'BudgetSchool - ניהול תקציב',
-    dev: 'FinEdu',
-    icon: 'account_balance_wallet',
-    color: '#ff6d00',
-    price: 149,
-    desc: 'ניהול תקציב בית ספר מקצה לקצה: תקבולים, הוצאות, דוחות ובקרה.',
-    features: [
-      'ניהול תקציב שנתי',
-      'מעקב הוצאות בזמן אמת',
-      'הפקת דוחות לרשות',
-      'ניהול הזמנות ורכש',
-      'התראות חריגה',
-      'ממשק רואה חשבון'
-    ]
-  },
-  'mgmt-safety': {
-    title: 'SafeSchool - בטיחות וחירום',
-    dev: 'SafeEdu',
-    icon: 'security',
-    color: '#f44336',
-    price: 199,
-    desc: 'מערכת ניהול בטיחות וחירום לבית הספר: תרגילים, התרעות, מיפוי סיכונים ודיווח.',
-    features: [
-      'ניהול תרגילי חירום שנתיים',
-      'מערכת התרעה בזמן אמת',
-      'מיפוי סיכונים ותיקון',
-      'דיווח תקריות דיגיטלי',
-      'קשר ישיר עם גורמי חירום',
-      'הדרכות בטיחות מובנות'
-    ]
-  },
-  'ped-lms': {
-    title: 'LMS Pro - פלטפורמת למידה',
-    dev: 'EduTech IL',
-    icon: 'laptop_chromebook',
-    color: '#00c853',
-    price: 249,
-    desc: 'פלטפורמת למידה מתקדמת עם שיעורים אינטראקטיביים, מעקב התקדמות ולמידה אדפטיבית.',
-    features: [
-      'קורסים אינטראקטיביים',
-      'למידה אדפטיבית מבוססת AI',
-      'מעקב התקדמות בזמן אמת',
-      'ספריית תכנים ישראלית',
-      'כלי יצירת תוכן למורים',
-      'גיימיפיקציה ותגמולים'
-    ]
-  }
-};
-
-let cart = [];
-let currentModalProduct = null;
-
-// ===== CART =====
-function addToCart(name, price, color) {
-  if (cart.find(item => item.name === name)) return;
-  cart.push({ name, price, color });
-  updateCart();
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCart();
-}
-
-function updateCart() {
-  const badge = document.getElementById('cartBadge');
-  const items = document.getElementById('cartItems');
-  const total = document.getElementById('cartTotal');
-
-  badge.textContent = cart.length;
-  badge.style.display = cart.length > 0 ? 'flex' : 'none';
-
-  if (cart.length === 0) {
-    items.innerHTML = '<div class="empty-cart"><span class="material-icons-round">shopping_cart</span><p>העגלה ריקה</p></div>';
-  } else {
-    items.innerHTML = cart.map((item, i) => `
-      <div class="cart-item">
-        <div class="cart-item-icon" style="background: ${item.color}">
-          <span class="material-icons-round">check_circle</span>
-        </div>
-        <div class="cart-item-info">
-          <h4>${item.name}</h4>
-          <p>רישיון חודשי</p>
-        </div>
-        <div class="cart-item-price">${item.price === 0 ? 'חינם' : item.price + ' ש"ח'}</div>
-        <button class="cart-item-remove" onclick="removeFromCart(${i})">
-          <span class="material-icons-round">delete</span>
-        </button>
-      </div>
-    `).join('');
-  }
-
-  const sum = cart.reduce((acc, item) => acc + item.price, 0);
-  total.textContent = sum + ' ש"ח/חודש';
-}
-
-function toggleCart() {
-  document.getElementById('cartPanel').classList.toggle('show');
-}
-
-// ===== MODAL =====
-function openModal(id) {
-  const p = products[id];
-  if (!p) return;
-
-  currentModalProduct = p;
-
-  document.getElementById('modalIcon').style.background = `linear-gradient(135deg, ${p.color}, ${p.color}cc)`;
-  document.getElementById('modalIconInner').textContent = p.icon;
-  document.getElementById('modalTitle').textContent = p.title;
-  document.getElementById('modalDev').textContent = p.dev;
-  document.getElementById('modalDesc').textContent = p.desc;
-  document.getElementById('modalPrice').textContent = p.price === 0 ? 'התקן בחינם' : `הוסף לעגלה - ${p.price} ש"ח/חודש`;
-
-  const screenshots = document.getElementById('modalScreenshots');
-  screenshots.innerHTML = ['דשבורד ראשי', 'ממשק עבודה', 'דוחות וניתוח'].map((label, i) => `
-    <div class="modal-screenshot" style="background: linear-gradient(135deg, ${p.color}${['dd','bb','99'][i]}, ${p.color}${['99','77','55'][i]});">
-      ${label}
-    </div>
-  `).join('');
-
-  const features = document.getElementById('modalFeatures');
-  features.innerHTML = p.features.map(f => `
-    <li><span class="material-icons-round">check_circle</span> ${f}</li>
-  `).join('');
-
-  document.getElementById('modalOverlay').classList.add('show');
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay')) {
-    document.getElementById('modalOverlay').classList.remove('show');
-  }
-}
-
-function addModalToCart() {
-  if (!currentModalProduct) return;
-  addToCart(currentModalProduct.title, currentModalProduct.price, currentModalProduct.color);
-  document.getElementById('modalOverlay').classList.remove('show');
-  document.getElementById('cartPanel').classList.add('show');
-}
-
-// ===== NAVIGATION =====
-function filterCategory(cat, el) {
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-  if (el) el.classList.add('active');
-  // In production: filter products by category
-}
-
-// ===== DEVICE CHIPS =====
-document.querySelectorAll('.device-chip').forEach(chip => {
-  chip.addEventListener('click', () => {
-    document.querySelectorAll('.device-chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-  });
-});
-
-// ===== SEARCH =====
-document.getElementById('searchInput').addEventListener('input', function(e) {
-  const query = e.target.value.toLowerCase();
-  // In production: filter and search products
-});
-
-// ===== SCROLL ANIMATION =====
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+const products={'agent-lesson':{title:'סוכן מערכי שיעור',dev:'EduPlay AI',icon:'#i-sparkle',color:'#6c5ce7',price:149,desc:'סוכן AI שמייצר מערכי שיעור מותאמים אישית לכל מקצוע, שכבת גיל ורמת כיתה. מבוסס על תכנית הלימודים של משרד החינוך.',features:['יצירת מערך שיעור מלא ב-30 שניות','התאמה לתכנית הלימודים הישראלית','בידול אוטומטי ל-3 רמות','חומרי עזר ודפי עבודה מובנים','שיתוף עם צוות המקצוע','ארכיון מערכי שיעור חכם']},'agent-parent':{title:'סוכן תקשורת הורים',dev:'ParentConnect',icon:'#i-users',color:'#e91e63',price:99,desc:'סוכן AI שמנהל את כל התקשורת עם ההורים: הודעות, עדכונים, זימון פגישות ומענה אוטומטי.',features:['מענה אוטומטי 24/7','תרגום אוטומטי לערבית ואנגלית','זימון פגישות חכם','הודעות מותאמות','דוח תקשורת שבועי','אינטגרציה עם וואטסאפ']},'agent-assess':{title:'סוכן הערכה חכם',dev:'AssessAI',icon:'#i-checklist',color:'#00bfa5',price:179,desc:'מערכת הערכה מבוססת AI שיוצרת מבחנים ובודקת תשובות אוטומטית.',features:['יצירת מבחנים אוטומטית','בדיקת תשובות פתוחות','ניתוח פערים','דוחות הורים','בנק 50,000+ שאלות','התאמה לחינוך מיוחד']},'agent-behavior':{title:'סוכן ניהול התנהגות',dev:'BehaviorPro',icon:'#i-brain',color:'#ff6d00',price:129,desc:'מערכת ניהול התנהגות חיובית לכיתה ולבית הספר.',features:['תיעוד בקליק','ניתוח דפוסים','תוכניות התערבות','דיווח אוטומטי','מערכת תגמולים','קשר עם הורים']},'agent-schedule':{title:'סוכן מערכת שעות',dev:'ScheduleBot',icon:'#i-calendar',color:'#3b82f6',price:199,desc:'AI שבונה מערכת שעות אופטימלית.',features:['בניית מערכת ב-5 דקות','ניהול אילוצים','חלופות בהיעדרות','סנכרון Google/Outlook','התראות שינויים','אופטימיזציית חדרים']},'agent-sped':{title:'סוכן חינוך מיוחד',dev:'IncludeAI',icon:'#i-access',color:'#eab308',price:159,desc:'סוכן AI לתוכניות אישיות והתאמות.',features:['הפקת תל"א אוטומטית','התאמות מבחנים','מעקב יעדים','דוחות לוועדות','בנק אסטרטגיות','קשר עם גורמי טיפול']},'mgmt-erp':{title:'EduERP',dev:'EduPlay Enterprise',icon:'#i-dashboard',color:'#3b82f6',price:499,desc:'מערכת ERP מלאה לבית ספר.',features:['ניהול 1,000+ תלמידים','מודול כח אדם','ניהול תקציב','ציונים ותעודות','דוחות BI','אינטגרציה משב"ס']},'mgmt-attend':{title:'AttendEase',dev:'AttendTech',icon:'#i-checklist',color:'#00b894',price:89,desc:'נוכחות דיגיטלית חכמה.',features:['רישום בקליק','התראות היעדרות','דוחות שבועיים','זיהוי דפוסים','סנכרון מערכת שעות','דיווח למשרד']},'mgmt-budget':{title:'BudgetSchool',dev:'FinEdu',icon:'#i-wallet',color:'#f59e0b',price:149,desc:'ניהול תקציב בית ספר.',features:['תקציב שנתי','מעקב הוצאות','דוחות לרשות','ניהול רכש','התראות חריגה','ממשק רו"ח']},'mgmt-safety':{title:'SafeSchool',dev:'SafeEdu',icon:'#i-shield',color:'#ef4444',price:199,desc:'בטיחות וחירום.',features:['תרגילי חירום','מערכת התרעה','מיפוי סיכונים','דיווח תקריות','קשר חירום','הדרכות בטיחות']}};
+let cart=[],curProd=null;
+document.querySelectorAll('[data-id]').forEach(el=>{el.addEventListener('click',()=>openModal(el.dataset.id))});
+function addToCart(n,p,c){if(cart.find(i=>i.name===n))return;cart.push({name:n,price:p,color:c});updateCart()}
+function removeFromCart(i){cart.splice(i,1);updateCart()}
+function updateCart(){const d=document.getElementById('cartDot'),it=document.getElementById('cartItems'),t=document.getElementById('cartTotal');d.style.display=cart.length>0?'block':'none';if(!cart.length){it.innerHTML='<div class="empty-cart"><svg style="width:64px;height:64px;color:var(--glass-border)"><use href="#i-cart"/></svg><p>העגלה ריקה</p></div>'}else{it.innerHTML=cart.map((x,i)=>`<div class="cart-item"><div class="cart-ii" style="background:${x.color}"><svg style="width:24px;height:24px;color:#fff"><use href="#i-check"/></svg></div><div class="cart-info"><h4>${x.name}</h4><p>רישיון חודשי</p></div><div class="cart-price">${x.price===0?'חינם':x.price+' ש"ח'}</div><button class="cart-rm" onclick="removeFromCart(${i})"><svg><use href="#i-trash"/></svg></button></div>`).join('')}t.textContent=cart.reduce((a,i)=>a+i.price,0)+' ש"ח/חודש'}
+function toggleCart(){document.getElementById('cartPanel').classList.toggle('show')}
+function openModal(id){const p=products[id];if(!p)return;curProd=p;document.getElementById('mIcon').style.background=`linear-gradient(135deg,${p.color},${p.color}cc)`;document.getElementById('mIconSvg').innerHTML=`<use href="${p.icon}"/>`;document.getElementById('mTitle').textContent=p.title;document.getElementById('mDev').textContent=p.dev;document.getElementById('mDesc').textContent=p.desc;document.getElementById('mPrice').textContent=p.price===0?'התקן בחינם':`הוסף - ${p.price} ש"ח/חודש`;document.getElementById('mShots').innerHTML=['דשבורד','ממשק עבודה','דוחות'].map((l,i)=>`<div class="modal-shot" style="background:linear-gradient(135deg,${p.color}dd,${p.color}77)">${l}</div>`).join('');document.getElementById('mFeats').innerHTML=p.features.map(f=>`<li><svg><use href="#i-check"/></svg>${f}</li>`).join('');document.getElementById('modalOverlay').classList.add('show')}
+function closeModal(e){if(e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show')}
+function addModalToCart(){if(!curProd)return;addToCart(curProd.title,curProd.price,curProd.color);document.getElementById('modalOverlay').classList.remove('show');document.getElementById('cartPanel').classList.add('show')}
+function filterCat(c,el){document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));if(el)el.classList.add('active')}
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis')})},{threshold:.1});document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
 </script>
-
 </body>
 </html>
